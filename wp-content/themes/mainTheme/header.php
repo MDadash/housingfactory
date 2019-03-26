@@ -1,0 +1,60 @@
+<?php wp_enqueue_script("jquery"); ?>
+
+<?php wp_head() ?>
+
+<script type="text/javascript"
+   src="<?php bloginfo("template_url"); ?>/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+   src="<?php bloginfo("template_url"); ?>/js/scripts.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><?php bloginfo('name'); ?></title>
+	<meta name="description" content="">
+  <meta name="author" content="">
+</head>
+<body>
+
+	<header>
+		<div class="container header-info">
+			<div class="row">
+				<div class="col-12 col-sm-5 col-md-3 text-center text-sm-left">
+					<a href="index.php">
+						<img src="<?php bloginfo('template_url') ?>/images/logo.png" alt="logo">
+					</a>
+				</div>
+				<div class="col-12 col-sm-4 col-md-3 offset-sm-3 offset-md-0 mt-3 pl-3  text-center text-sm-left">
+					<a href="tel:89371234567" class="phonenumber link-phone">8(917)648-06-11</a>
+					<p class="mt-2 p-color-grey d-none d-md-block">У нас есть покупатель на вашу квартиру</p>
+				</div>
+				<div class="col-12 col-sm-4 col-md-3 offset-sm-8 offset-md-0 mt-1 mt-sm-0 mt-md-3 text-center text-sm-left mt-negative-40">
+					<a href="tel:89371234567" class="phonenumber">8(937)531-66-77</a> <br>
+					<a href="javascript:void(0);" class="link-modal link-modal--call">Заказать звонок</a>
+				</div>
+				<div class="col-sm-3 mt-3 pl-0 d-none d-md-block">
+					<p class="p-color-grey">г.Волгоград<br>
+					улица 64-й Армии ул. 71 а</p>
+					<a href="javascript:void(0);" class="link-modal link-modal--map">На карте</a>
+				</div>
+			</div>
+		</div>
+
+	
+		<nav class="navbar navbar-expand-md navbar-dark navbar--header pb-md-0">
+			<div class="container header-menu-container">
+<!-- 				<a class="navbar-brand d-md-none" href="#">Navigation</a> -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<?php wp_nav_menu( array(
+					'menu'            => 'navbar', 
+					'container_class' => 'collapse navbar-collapse',
+					'container_id'    => 'navbarNav',
+					'menu_class'      => 'navbar-nav',
+					'menu_id'         => ' '
+					) ); ?>
+			</div>
+		</nav>
+	</header>

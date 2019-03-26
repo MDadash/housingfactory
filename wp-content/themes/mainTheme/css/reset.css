@@ -1,0 +1,123 @@
+ /* reset 
+ ___________________________________________________________________________  */
+ html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+a,
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+* {
+    box-sizing: border-box;
+}
+button,
+button:focus,
+button:hover,
+button:active {
+    outline: none;
+}
+
+/*  to fix footer to the page bottom if not enough content
+___________________________________________________________________________  */
+body, html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+footer {
+    flex: 0 0  auto;
+}
+/* ___________________________________________________________________________  */
+
+body, html {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    background-color: #ebf1f9;
+    color: #414447;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h1,h2,h3,h4{
+    color: #292a2c;
+    font-weight: 400;
+}
+
+h2{
+    font-size: 32px;
+}
+
+h3{
+    font-size: 18px;
+}
+
+main {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+@media (max-width: 992px) {
+
+    h1{
+        font-size: 22px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+}
+
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+a{  
+    cursor: pointer;
+    color: #414447;
+    font-family: inherit;
+    text-decoration:none;
+    outline: none; 
+}
+
+a:hover,
+a:focus,
+a:active{
+    text-decoration: none;
+    color: inherit;
+}  
+
+
+.visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
