@@ -146,6 +146,9 @@ p.application__main--three {
 .application__contact--phone {
 	font-size: 30px;
 }
+.container a.application__contact--phone:hover {
+	text-decoration: underline;
+}
 .application__contact--phone:before {
 	background-position: 76px 0px;
 	top: 7px;
@@ -262,6 +265,7 @@ p.application__main--three {
 	}
 	.application__contact--text {
 		padding-bottom: 0;
+		text-align: justify;
 	}
 	.application__contact--phone {
 		padding-bottom: 15px;
@@ -276,7 +280,7 @@ p.application__main--three {
 		font-size: 27px;
 	}
 	.application__btn--box {
-		margin-left: 145px;
+		margin-left: 120px;
 	}
 	.application__main p {
 		font-size: 13px;
@@ -293,7 +297,7 @@ p.application__main--three {
 }
 @media (max-width: 400px) {
 	.application__btn--box {
-		margin-left: 120px;
+		margin-left: 90px;
 	}
 	.application__main--head {
 		font-size: 20px;
@@ -305,23 +309,29 @@ p.application__main--three {
 }
 @media (max-width: 350px) {
 	.application__btn--box {
-		margin-left: 100px;
+		margin-left: 60px;
 	}
 	p.application__main--three {
 		margin-left: 15px;
 		width: 270px;
 		height: 270px;
 	}
+	.application__contact--text {
+		margin-bottom: 10px;
+	}
 }
 @media (max-width: 320px) {
 	.application__top h2 {
 		font-size: 25px;
 	}
+	.application__btn--box {
+		margin-left: 40px;
+	}
 	.application__top--text {
 		font-size: 13px;
 	}
-	.application__btn--box {
-		margin-left: 85px;
+	p.application__main--three {
+		margin-left: 5px;
 	}
 }
 

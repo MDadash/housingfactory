@@ -779,6 +779,7 @@ button{
     font-size: 14px;
     background-color: #fff;
     margin-bottom: 40px;
+    padding-top: 20px;
 }
 
 .appartment__title{
@@ -918,7 +919,7 @@ button{
     position: relative;
     font-size: 15px;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding: 0;
     background-color: #d02f4a;
 }
@@ -983,6 +984,7 @@ button{
 .appartment__change-app-wrapper{
     display: flex;
     justify-content: center;
+    margin-bottom: 25px;
 }
 
 .appartment__change-app{

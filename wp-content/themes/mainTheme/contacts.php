@@ -13,7 +13,7 @@ Template Name: contacts
                 <p class="contacts__top--text">Мы очень рады, что вы проявили интерес</p>
             </div>
             <div class="col-md-3 col-lg-2 col-sm-12 application__btn--box">
-                <a href="#" class="application__btn"><span>Назад</span></a>
+                <a href="javascript:history.back();" class="application__btn"><span>Назад</span></a>
             </div>
         </div>
         <div class="contacts__main">

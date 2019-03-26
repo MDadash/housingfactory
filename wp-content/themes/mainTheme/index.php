@@ -35,192 +35,42 @@ get_header();
                 </div>
             </div>
             <div class="proposals__item-list row">
+                <?php foreach (helloworld()->Ad as $flat) : ?>
                 <div class="proposals__item col-sm-6 col-lg-4">
                     <div class="proposals__img-wrapper">
                         <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
+<!--                        <img class="proposals__img" src="--><?php //bloginfo('template_url') ?><!--/images/app-1.jpg" alt="--><?php //echo $flat->Street;?><!--">-->
+                        <img class="proposals__img" src="<?php echo $flat->Images->Image[0]['url']; ?>" alt="<?php echo $flat->Street;?>">
                         <span class="proposals__sale">Скидки</span>
                         <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
+                        <span class="proposals__rooms"><?php echo $flat->Rooms;?> комнаты</span>
+                        <?php if(count($flat->Images->Image) >= 8) : ?>
                         <span class="proposals__reccommend"></span>
+                        <?php endif ?>
                     </div>
                     <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
+                        <h3 class="proposals__title"><?php echo $flat->Street;?></h3>
                         <table class="proposals__info">
                             <tr>
                                 <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
+                                <td class="proposals__value"><?php echo $flat->Floor;?>/<?php echo $flat->Floors;?></td>
                             </tr>
                             <tr>
                                 <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
+                                <td class="proposals__value"><?php echo $flat->Rooms;?></td>
                             </tr>
                             <tr>
                                 <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
+                                <td class="proposals__value"><?php echo $flat->Square;?>m<sup>2</sup></td>
                             </tr>
                         </table>
                     </div>
                     <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
+<!--                        <span class="proposals__price-last">6 500 000 &#8381;</span>-->
+                        <span class="proposals__price-new"><?php echo $flat->Price;?> &#8381;</span>
                     </div>
                 </div>
-                <div class="proposals__item col-sm-6 col-lg-4">
-                    <div class="proposals__img-wrapper">
-                        <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
-                        <span class="proposals__sale">Скидки</span>
-                        <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
-                        <span class="proposals__reccommend"></span>
-                    </div>
-                    <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
-                        <table class="proposals__info">
-                            <tr>
-                                <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
-                    </div>
-                </div>
-                <div class="proposals__item col-sm-6 col-lg-4">
-                    <div class="proposals__img-wrapper">
-                        <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
-                        <span class="proposals__sale">Скидки</span>
-                        <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
-                        <span class="proposals__reccommend"></span>
-                    </div>
-                    <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
-                        <table class="proposals__info">
-                            <tr>
-                                <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
-                    </div>
-                </div>
-                <div class="proposals__item col-sm-6 col-lg-4">
-                    <div class="proposals__img-wrapper">
-                        <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
-                        <span class="proposals__sale">Скидки</span>
-                        <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
-                        <span class="proposals__reccommend"></span>
-                    </div>
-                    <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
-                        <table class="proposals__info">
-                            <tr>
-                                <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
-                    </div>
-                </div>
-                <div class="proposals__item col-sm-6 col-lg-4">
-                    <div class="proposals__img-wrapper">
-                        <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
-                        <span class="proposals__sale">Скидки</span>
-                        <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
-                        <span class="proposals__reccommend"></span>
-                    </div>
-                    <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
-                        <table class="proposals__info">
-                            <tr>
-                                <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
-                    </div>
-                </div>
-                <div class="proposals__item col-sm-6 col-lg-4">
-                    <div class="proposals__img-wrapper">
-                        <a class="proposals__link" href="">Посмотреть</a>
-                        <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/app-1.jpg" alt="8-ой Воздушной Армии,дом 6 Б">
-                        <span class="proposals__sale">Скидки</span>
-                        <span class="proposals__mortgage">Ипотека</span>
-                        <span class="proposals__rooms">3 комнаты</span>
-                        <span class="proposals__reccommend"></span>
-                    </div>
-                    <div class="proposals__info-wrapper">
-                        <h3 class="proposals__title">8-ой Воздушной Армии,дом 6 Б</h3>
-                        <table class="proposals__info">
-                            <tr>
-                                <td class="proposals__field">Этаж:</td>
-                                <td class="proposals__value">17/17</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Комнат</td>
-                                <td class="proposals__value">3</td>
-                            </tr>
-                            <tr>
-                                <td class="proposals__field">Площадь</td>
-                                <td class="proposals__value">120.5m<sup>2</sup></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="proposals__price-wrapper">
-                        <span class="proposals__price-last">6 500 000 &#8381;</span>
-                        <span class="proposals__price-new">6 400 000 &#8381;</span>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
 <!--         <section class="proposals proposals--disc container">
