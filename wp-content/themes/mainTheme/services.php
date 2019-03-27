@@ -21,43 +21,7 @@ Template Name: services
                                     <?php the_post_thumbnail(); ?>
                                     <span><?php the_title(); ?></span></a>
                             </li>
-                    <?php } ?> 
-                    <!--  <li class="assistance__item">
-                        <a class="assistance__link assistance__link--aa" href=""><span>Оценка недвижимости</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ba" href=""><span>Покупка недвижимости</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ao" href=""><span>Объекты недвижимости online</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--co" href=""><span>Обмен недвижимости</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--sera" href=""><span>Управление недвижимостью</span></a>
-                    </li>    
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ban" href=""><span>Обмен квартир</span></a>
-                    </li>    
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--banew" href=""><span>Купить квартиру в новостройке</span></a>
-                    </li>         
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--assb" href=""><span>Оформление сертификата сбербанка</span></a>
-                    </li>                    
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--als" href=""><span>Оформление жилищного сертификата</span></a>
-                    </li>                                     
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--am" href=""><span>Оформление ипотеки</span></a>
-                    </li>                    
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--amc" href=""><span>Оформление военной ипотеки</span></a>
-                    </li>                    
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ams" href=""><span>Оформление материнского капитала</span></a>
-                    </li>     -->                
+                    <?php } ?>
                 </ul>
             </div>
             <div class="col-md-6">
@@ -75,34 +39,7 @@ Template Name: services
                                         <?php the_post_thumbnail(); ?>
                                         <span><?php the_title(); ?></span></a>
                                 </li>
-                    <?php } ?> 
-<!--                     <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rri" href=""><span>Оформление прав на квартиру</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rri" href=""><span>Оформление наследства на квартиру</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rau" href=""><span>Перевод квартиры в нежилое помещение</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ga" href=""><span>Дарение квартиры (дарственная)</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rd" href=""><span>Регистрация сделок</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rrh" href=""><span>Регистрация прав на имущество</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--ra" href=""><span>Оформление квартиры</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--da" href=""><span>Сделки с недвижимостью</span></a>
-                    </li>
-                    <li class="assistance__item">
-                        <a class="assistance__link assistance__link--rdd" href=""><span>Регистрация недвижимости</span></a>
-                    </li> -->
+                    <?php } ?>
                 </ul>
             </div>
         </div>

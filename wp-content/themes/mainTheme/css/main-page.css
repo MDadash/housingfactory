@@ -359,7 +359,12 @@ button{
     display: block;
 }
 
-.proposals__img-wrapper {
+.proposals__img{
+    height: 250px;
+    object-fit: cover;
+}
+
+.proposals__img-wrapper{
     position: relative;
     color: #fff;
 }
