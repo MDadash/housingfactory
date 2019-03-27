@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row text-center text-md-left">
 				<div class="col-12 col-md-3 col-lg-4 footer-logo">
-					<a href="index.php">
+					<a href="<?php echo get_home_url(); ?>">
 						<img src="<?php bloginfo('template_url') ?>/images/logo.png" alt="logo">
 					</a>	
 				</div>

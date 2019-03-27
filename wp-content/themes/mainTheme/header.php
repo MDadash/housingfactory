@@ -21,7 +21,7 @@
 		<div class="container header-info">
 			<div class="row">
 				<div class="col-12 col-sm-5 col-md-3 text-center text-sm-left">
-					<a href="index.php">
+					<a href="<?php echo get_home_url(); ?>">
 						<img src="<?php bloginfo('template_url') ?>/images/logo.png" alt="logo">
 					</a>
 				</div>

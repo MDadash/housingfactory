@@ -1,4 +1,4 @@
-/<?php
+<?php
 /*
 Template Name: item
 */
@@ -33,7 +33,7 @@ Template Name: item
                     </div>
                 </div>
                 <div class="appartment__mortgage">
-                    <a href="http://demo.pinofran.com/demo/housingfactory/?page_id=9" class="appartment__mortgage-link">
+                    <a href="<?php echo get_page_link( 9 ); ?>" class="appartment__mortgage-link">
                         <span class="appartment__mortgage-text">Подать заявку в банк</span>
                         <span class="appartment__mortgage-text">на ипотеку</span>
                     </a>
