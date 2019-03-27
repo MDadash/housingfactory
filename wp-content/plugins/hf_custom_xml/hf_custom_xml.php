@@ -11,9 +11,7 @@ define('XML_FILE_DIR', plugin_dir_path(__FILE__));
 add_action('init', 'getAllXml');
 
 function getAllXml() {
-    if (is_home() || is_page(7053)){
-        $file = XML_FILE_DIR . '/hfxml.xml';
-        $xml = simplexml_load_file($file);
-        return $xml;
-    }
+    $file = XML_FILE_DIR . '/hfxml.xml';
+    $xml = simplexml_load_file($file);
+    return $xml;
 }
