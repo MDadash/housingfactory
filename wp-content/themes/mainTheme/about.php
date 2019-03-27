@@ -14,6 +14,17 @@ Template Name: about
           <div class="col-12"><?php the_content(); ?></div>
       <?php endwhile; endif; ?>
     </div>
+
+    <div class="row filter__wrap">
+      <div class="col-10">
+        <h2>Количество комнат</h2>
+
+      </div>
+      <div class="col-2">
+        <h2>Район</h2>
+
+      </div>
+    </div>
 	</section>
 </main>
 

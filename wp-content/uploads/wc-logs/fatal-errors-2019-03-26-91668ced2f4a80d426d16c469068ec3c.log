@@ -1,8 +1,0 @@
-2019-03-26T15:33:10+00:00 CRITICAL Uncaught Error: Call to undefined function helloworld() in C:\OpenServer_5_2_8_Basic\OSPanel\domains\housingfactory\wp-content\themes\mainTheme\index.php:38
-Stack trace:
-#0 C:\OpenServer_5_2_8_Basic\OSPanel\domains\housingfactory\wp-includes\template-loader.php(77): include()
-#1 C:\OpenServer_5_2_8_Basic\OSPanel\domains\housingfactory\wp-blog-header.php(19): require_once('C:\\OpenServer_5...')
-#2 C:\OpenServer_5_2_8_Basic\OSPanel\domains\housingfactory\index.php(17): require('C:\\OpenServer_5...')
-#3 {main}
-  thrown in C:\OpenServer_5_2_8_Basic\OSPanel\domains\housingfactory\wp-content\themes\mainTheme\index.php on line 38
-
