@@ -638,8 +638,13 @@ button{
     border-right: none;
 }
 
+
 .modal-title{
-    font-size: 29px;
+    font-size: 23px;
+}
+
+.modal-header{
+    border-bottom: none;
 }
 
 .modal-sell  .modal-header{

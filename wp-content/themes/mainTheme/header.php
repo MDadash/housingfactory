@@ -31,12 +31,12 @@
 				</div>
 				<div class="col-12 col-sm-4 col-md-3 offset-sm-8 offset-md-0 mt-1 mt-sm-0 mt-md-3 text-center text-sm-left mt-negative-40">
 					<a href="tel:89371234567" class="phonenumber">8(937)531-66-77</a> <br>
-					<a href="javascript:void(0);" class="link-modal link-modal--call">Заказать звонок</a>
+					<a href="javascript:void(0);" class="link-modal link-modal--call" data-toggle="modal" data-target="#modal-callback">Заказать звонок</a>
 				</div>
 				<div class="col-sm-3 mt-3 pl-0 d-none d-md-block">
 					<p class="p-color-grey">г.Волгоград<br>
 					улица 64-й Армии ул. 71 а</p>
-					<a href="javascript:void(0);" class="link-modal link-modal--map">На карте</a>
+					<a href="<?php echo get_page_link( 15 ); ?>" class="link-modal link-modal--map">На карте</a>
 				</div>
 			</div>
 		</div>
@@ -58,3 +58,35 @@
 			</div>
 		</nav>
 	</header>
+
+
+	<div class="modal" id="modal-callback">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Заказать звонок</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                <form class="modal-sell__form" method="post" action="">
+                      <div class="form-group">
+                        <label for="name">Ваше имя:</label> 
+                        <input class="form-control"  id="name" name="name" type="text" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="text">Номер телефона</label> 
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">+7</div>
+                          </div> 
+                          <input class="form-control"  id="text" name="tel" type="text"required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn" name="submit" type="submit">Отправить</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
