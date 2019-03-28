@@ -30,3 +30,24 @@ function getOnlyFlats() {
     }
     return $onlyFlats;
 }
+
+add_action('wp_ajax_getflats', 'getFlatsForAjax');
+add_action('wp_ajax_nopriv_getflats', 'getFlatsForAjax');
+
+add_action('wp_ajax_getimagesbyflat', 'getImagesByFlatId');
+add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
+
+function getFlatsForAjax() {
+    echo json_encode(getOnlyFlats());
+    wp_die();
+}
+
+function getImagesByFlatId() {
+    $flat_id = $_GET['flat_id'];
+    $imagesByFlatId = [];
+    foreach (getFlatById($flat_id)['Images']['Image'] as $img) {
+        array_push($imagesByFlatId, $img['@attributes']['url']);
+    }
+    echo json_encode($imagesByFlatId);
+    wp_die();
+}
