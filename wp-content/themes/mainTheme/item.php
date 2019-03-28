@@ -10,22 +10,25 @@ Template Name: item
         <div class="row">
             <div class="col-md-6 col-lg-8 appartment__ls">
                 <h2 class="appartment__title">Описание квартиры</h2>
-                <p class="appartment__description">Капитальный ремонт полностью всей квартиры: заменены вся электро разводка от подъездного щита, новый эл. счетчик, новая разводка труб из металлопластика холодной и горячей воды, пвх канализация, стояки отопления поменяны от соседей до чердака, новые радиаторы отопления, пластиковые окна, новые двери, ремонт полов и утепление, счетчики водопроводной воды, натяжные потолки-везде</p>
-                <p class="appartment__description">А если успеете купить до конца Ноября, то возможно купить + гараж рядом с домом почти даром!Скидка на электроэнергию 70% (кто умеет считать, тот оценит)интересует обмен на 1 комнатную или студию до 1300+ доплата 900 тыс.В шаговой доступности школа, лицей, детские сады, транспортная развязка, трамвай, троллейбус, автобусы, гипермаркет, поликлиника, бассейн, и многое другое...</p>
+                <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
+                    <img src="<?php echo $img['@attributes']['url']?>">
+                <?php endforeach;?>
+                <p class="appartment__description"><?php echo getFlatById($_GET['flat_id'])['Description']; ?></p>
             </div>
             <div class="col-md-6 col-lg-4 appartment__rs">
-                <h2 class="appartment__title">Волгоград,<br> Библиотечная ул, 12,Краснооктябрьски</h2>
-                <div class="appartment__id-wrapper"><span>ID 312978</span><a class="appartment__rooms">1 комнатная</a></div>
-                <strong class="appartment__price">6 400 000 &#8381;</strong>
-                <div class="appartment__info-wr"><span class="appartment__info-title">Район:</span>Кировский</div>
-                <div class="appartment__info-wr"><span class="appartment__info-title">Ул:</span>8-ой Воздушной Армии, дом 6 Б</div>
+                <h2 class="appartment__title"><?php echo getFlatById($_GET['flat_id'])['City']; ?>,<br> <?php echo getFlatById($_GET['flat_id'])['Street']; ?></h2>
+                <div class="appartment__id-wrapper"><span>ID <?php echo getFlatById($_GET['flat_id'])['Id']; ?></span><a class="appartment__rooms"><?php echo getFlatById($_GET['flat_id'])['Rooms']; ?> комнатная</a></div>
+                <strong class="appartment__price"><?php echo getFlatById($_GET['flat_id'])['Price']; ?> &#8381;</strong>
+                <div class="appartment__info-wr"><span class="appartment__info-title">Район:</span><?php echo getFlatById($_GET['flat_id'])['District']; ?></div>
+<!--                <div class="appartment__info-wr"><span class="appartment__info-title">Ул:</span>8-ой Воздушной Армии, дом 6 Б</div>-->
+                <div class="appartment__info-wr"><?php echo getFlatById($_GET['flat_id'])['Street']; ?></div>
                 <div class="appartment__info-block-wr">
-                    <div class="appartment__info-block"><span class="appartment__info-block-title">Жилая</span><strong class="appartment__info-block-desc">50.5 м<sup>2</sup></strong></div>
-                    <div class="appartment__info-block"><span class="appartment__info-block-title">Кухня</span><strong class="appartment__info-block-desc">11.5<sup>2</sup></strong></div> 
+                    <div class="appartment__info-block"><span class="appartment__info-block-title">Жилая</span><strong class="appartment__info-block-desc"><?php echo getFlatById($_GET['flat_id'])['LivingSpace']; ?> м<sup>2</sup></strong></div>
+                    <div class="appartment__info-block"><span class="appartment__info-block-title">Кухня</span><strong class="appartment__info-block-desc"><?php echo getFlatById($_GET['flat_id'])['KitchenSpace']; ?> м<sup>2</sup></strong></div>
                 </div>
-                <div class="appartment__info-block"><span class="appartment__info-block-title">Этажность</span><strong class="appartment__info-block-desc">9/17</strong></div>
+                <div class="appartment__info-block"><span class="appartment__info-block-title">Этажность</span><strong class="appartment__info-block-desc"><?php echo getFlatById($_GET['flat_id'])['Floor']; ?>/<?php echo getFlatById($_GET['flat_id'])['Floors']; ?></strong></div>
                 <div class="appartment__feedback">
-                    <img class="appartment__feedback-img"src="<?php bloginfo('template_url') ?>/images/feedback.jpg" alt="Звоните">
+                    <img class="appartment__feedback-img" src="<?php bloginfo('template_url') ?>/images/feedback.jpg" alt="Звоните">
                     <div class="appartment__feedback-wr">
                         <h3 class="appartment__feedback-title">Звоните, я на связи!</h3>
                         <a class="appartment__feedback-call" href="tel:8 900 78-33-71">8 900 78-33-71 </a>
