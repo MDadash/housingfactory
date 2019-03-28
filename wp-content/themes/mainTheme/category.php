@@ -5,7 +5,42 @@ Template Name: category
 ?>
 <?php get_header() ?>
 
-<main class="main_page">
+<main class="category_page">
+
+    <section class="category__filter">
+      <div class="container container--articles">
+        <div class="row">
+          <div class="col-12 col-md-8 col-lg-9">
+
+            <div class="row">
+              <h2 class="filter__heading col-12">Количество комнат</h2>
+              <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="" class="filter__option">Комната</a></div>
+              <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="" class="filter__option">1 комнатная</a></div>
+              <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="" class="filter__option">2 комнатная</a></div>
+              <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="" class="filter__option">3 комнатная</a></div>
+              <div class="col-12 col-md-6 col-lg-3 col-xl px-1 my-1 my-lg-0"><a href="" class="filter__option">4 и более комнатная</a></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <h2 class="filter__heading">Район</h2>
+            <select name="select-district" id="select-district" class="filter__select my-1 my-lg-0">
+              <option value="Кировский">Кировский</option>
+              <option value="Кировский">Дзержинский</option>
+              <option value="Кировский">Ворошиловский</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="category__additionaltext">
+    <div class="container">
+      <div class="row">
+        <h2 class="col-12 additionaltext__heading">Студии в Кировском районе</h2>
+        <p class="col-12">Когда вам необходимо продать, обменять или купить квартиру или дом, в этом вопросе вам необходимо найти для себя настоящего специалиста. Этим специалистом, дающим весь комплекс услуг является наше агентство недвижимости в Волгограде «Фабрика Жилья».</p>
+      </div>
+    </div>
+  </section>
 
     <section class="proposals container">
         <div class="proposals__wrapper col-sm-12">
@@ -53,6 +88,15 @@ Template Name: category
                 </div>
             <?php endforeach; ?>
         </div>
+    </section>
+
+    <section class="category__additionaltext">
+      <div class="container">
+        <div class="row">
+          <h2 class="col-12 additionaltext__heading">Мы помогаем вам приобрести мечту</h2>
+          <p class="col-12">Наши риелторы, юристы, оценщики – проведут вас от самого начало пути, до заключения сделки. К нам обращаются собственники недвижимости, для быстрой и безопасной их реализации. Мы знаем в нашем регионе и мы всегда подстраиваемся под требования наших клиентов.</p>
+        </div>
+      </div>
     </section>
 
     <a class="btn-scroll">Наверх</a>
