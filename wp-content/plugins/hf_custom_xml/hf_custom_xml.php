@@ -20,3 +20,13 @@ function getFlatById($flat_id) {
     $flat = getAllXml()[array_search($flat_id, array_column(getAllXml(), 'Id'))];
     return $flat;
 }
+
+function getOnlyFlats() {
+    $onlyFlats = [];
+    $xmlArray = getAllXml();
+    $keys = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Квартиры');
+    foreach ($keys as $key) {
+        array_push($onlyFlats, $xmlArray[$key]);
+    }
+    return $onlyFlats;
+}

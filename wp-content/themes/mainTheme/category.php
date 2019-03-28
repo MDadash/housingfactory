@@ -6,7 +6,6 @@ Template Name: category
 <?php get_header() ?>
 
 <main class="main_page">
-
     <section class="proposals container">
         <div class="proposals__wrapper col-sm-12">
             <div class="row">
@@ -16,7 +15,7 @@ Template Name: category
             </div>
         </div>
         <div class="proposals__item-list row">
-            <?php foreach (getAllXml() as $flat) : ?>
+            <?php foreach (getOnlyFlats() as $flat) : ?>
                 <div class="proposals__item col-sm-6 col-lg-4">
                     <div class="proposals__img-wrapper">
                         <a class="proposals__link" href="<?php echo get_page_link( 7 ) . '&flat_id=' . $flat['Id']; ?>">Посмотреть</a>
