@@ -11,8 +11,11 @@ Template Name: services
           <div class="category__additionaltext">
             <div class="container">
               <div class="row">
-                <h2 class="col-12 additionaltext__heading">Студии в Кировском районе</h2>
-                <p class="col-12">Когда вам необходимо продать, обменять или купить квартиру или дом, в этом вопросе вам необходимо найти для себя настоящего специалиста. Этим специалистом, дающим весь комплекс услуг является наше агентство недвижимости в Волгограде «Фабрика Жилья».</p>
+                  <?php $the_query = new WP_Query('p=7058'); ?>
+                  <?php while  ($the_query->have_posts() ) : $the_query->the_post(); ?>
+                    <h2 class="col-12 additionaltext__heading"><?php the_title(); ?></h2>
+                    <div class="col-12"><?php the_content(); ?></div>
+                  <?php endwhile; ?>
               </div>
             </div>
           </div>
@@ -58,8 +61,11 @@ Template Name: services
           <div class="category__additionaltext mt-2">
             <div class="container">
               <div class="row">
-                <h2 class="col-12 additionaltext__heading">Мы помогаем вам приобрести мечту</h2>
-                <p class="col-12">Наши риелторы, юристы, оценщики – проведут вас от самого начало пути, до заключения сделки. К нам обращаются собственники недвижимости, для быстрой и безопасной их реализации. Мы знаем в нашем регионе и мы всегда подстраиваемся под требования наших клиентов.</p>
+                <?php $the_query = new WP_Query('p=7060'); ?>
+                <?php while  ($the_query->have_posts() ) : $the_query->the_post(); ?>
+                  <h2 class="col-12 additionaltext__heading"><?php the_title(); ?></h2>
+                  <div class="col-12"><?php the_content(); ?></div>
+                <?php endwhile; ?>
               </div>
             </div>
           </div>
