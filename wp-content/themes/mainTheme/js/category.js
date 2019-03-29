@@ -19,7 +19,7 @@
                 var currentDistrict = flatsArray[i]['District'];
                 districtsArray.push(currentDistrict);
                 console.log(currentDistrict);
-   
+
 
                 console.log(districtsArray);
             }
