@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="proposals__item-list row">
-                <?php foreach (getAllXml() as $flat) : ?>
+                <?php foreach (getLasTwelveFlats() as $flat) : ?>
                     <div class="proposals__item col-sm-6 col-lg-4">
                         <div class="proposals__img-wrapper">
                             <a class="proposals__link"
