@@ -49,6 +49,63 @@ Template Name: item
                 </div>
             </div>
         </div>
+
+
+        <div class="proposals__item-list row">
+            <?php foreach (getNearestFlats($_GET['flat_id']) as $flat) : ?>
+                <div class="proposals__item col-sm-6 col-lg-4">
+                    <div class="proposals__img-wrapper">
+                        <a class="proposals__link"
+                           href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">Посмотреть</a>
+                        <?php if (!is_array($flat['Images']['Image'])) : ?>
+                            <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
+                                 alt="<?php echo $flat->Street; ?>">
+                            <!--                                <span class="proposals__sale">Скидки</span>-->
+                            <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
+                                <span class="proposals__mortgage">Ипотека</span>
+                            <?php endif ?>
+                            <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
+                        <?php else : ?>
+                            <img class="proposals__img"
+                                 src="<?php echo $flat['Images']['Image'][0]['@attributes']['url']; ?>"
+                                 alt="<?php echo $flat->Street; ?>">
+                            <!--                                <span class="proposals__sale">Скидки</span>-->
+                            <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
+                                <span class="proposals__mortgage">Ипотека</span>
+                            <?php endif ?>
+                            <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
+                            <?php if (count($flat['Images']['Image']) >= 8) : ?>
+                                <span class="proposals__reccommend"></span>
+                            <?php endif ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="proposals__info-wrapper">
+                        <h3 class="proposals__title"><?php echo $flat['Street']; ?></h3>
+                        <table class="proposals__info">
+                            <tr>
+                                <td class="proposals__field">Этаж:</td>
+                                <td class="proposals__value"><?php echo $flat['Floor']; ?>
+                                    /<?php echo $flat['Floors']; ?></td>
+                            </tr>
+                            <tr>
+                                <td class="proposals__field">Комнат</td>
+                                <td class="proposals__value"><?php echo $flat['Rooms']; ?></td>
+                            </tr>
+                            <tr>
+                                <td class="proposals__field">Площадь</td>
+                                <td class="proposals__value"><?php echo $flat['Square']; ?>m<sup>2</sup></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="proposals__price-wrapper">
+                        <!--                        <span class="proposals__price-last">6 500 000 &#8381;</span>-->
+                        <span class="proposals__price-new"><?php echo $flat['Price']; ?> &#8381;</span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+
 <!--         <div class="row">
             <div class="application__map">
                 <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A36329de59be7854ce8be36767a9332a8a2289974a709541966d21f0cb4958656&amp;width=100%25&amp;height=400&amp;lang=uk_UA&amp;scroll=true"></script>
