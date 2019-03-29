@@ -13,7 +13,7 @@ function getAllXml() {
     $all = 'all_hf_flats.xml';
     $some = 'hfxml.xml';
 
-    $file = XML_FILE_DIR . $all;
+    $file = XML_FILE_DIR . $some;
     $xml = simplexml_load_file($file, null, LIBXML_NOCDATA);
     $xmlJson = json_encode($xml);
     $xmlArray = json_decode($xmlJson,true);
