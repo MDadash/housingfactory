@@ -54,7 +54,7 @@
                         <div class="proposals__img-wrapper">
                             <a class="proposals__link"
                                href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">Посмотреть</a>
-                            <?php if (!count($flat['Images']['Image'])) : ?>
+                            <?php if (!is_array($flat['Images']['Image'])) : ?>
                                 <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
                                      alt="<?php echo $flat->Street; ?>">
                                 <!--                                <span class="proposals__sale">Скидки</span>-->
