@@ -25,6 +25,23 @@ function getFlatById($flat_id) {
     return $flat;
 }
 
+function getNearestFlats($flat_id) {
+    $nearestFlats = [];
+    $allFlats = getAllXml();
+    $flat = getFlatById($flat_id);
+    $flatDistrict = $flat['District'];
+    $flatRooms = $flat['Rooms'];
+    $flatFloors = $flat['Floors'];
+
+    foreach ($allFlats as $key => $val) {
+        if ($val['District'] === $flatDistrict && $val['Rooms'] === $flatRooms && $val['Floors'] === $flatFloors) {
+            array_push($nearestFlats, $val);
+        }
+    }
+
+    return $nearestFlats;
+}
+
 function getOnlyFlats() {
     $onlyFlats = [];
     $xmlArray = getAllXml();
