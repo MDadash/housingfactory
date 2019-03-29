@@ -36,9 +36,8 @@ Template Name: category
                         <h2 class="filter__heading col-12 px-1">Район</h2>
                         <select name="select-district" id="select-district"
                                 class="filter__select px-1 my-1 my-lg-0 mx-1">
-                            <option value="Кировский">Кировский</option>
-                            <option value="Кировский">Дзержинский</option>
-                            <option value="Кировский">Ворошиловский</option>
+                            <option value="">- Выберите район -</option>
+
                         </select>
                     </div>
                 </div>
