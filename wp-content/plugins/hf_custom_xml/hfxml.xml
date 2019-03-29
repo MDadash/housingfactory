@@ -587,6 +587,50 @@
 		<HouseType>Кирпичный</HouseType>
 	</Ad>
 	<Ad>
+		<Id>6309399</Id>
+		<Category>Комнаты</Category>
+		<OperationType>Продам</OperationType>
+		<PropertyRights>Посредник</PropertyRights>
+		<Region>Волгоградская область</Region>
+		<City>Волгоград</City>
+		<District>Краснооктябрьский</District>
+		<Street>имени Ленина пр-кт, 89</Street>
+		<Latitude>48.763547</Latitude>
+		<Longitude>44.55801</Longitude>
+		<Rooms>4</Rooms>
+		<Description>
+			<![CDATA[Продаю 2 комнаты в 4-х комнатной квартира по адресу: улица пр.Ленина, дом 89 <br><br>кирпич.<br><br>Жилая площадь комнат - 36,6 метров.<br><br>Совмещённые комнаты: 21,7. 11,6 метров.<br><br>Кухня - 7 метров.<br><br>Санузел - раздельный<br><br>Комнаты и квартира в хорошем состоянии. Окна выходят во двор. Центральное отопление, счетчики на горячую, холодную воду, газ установлены.<br><br>Развитая инфраструктура: рядом детский садик, школы № 92 , парк , парковка, супермаркеты Магнит, Пятёрочка<br><br>Остановка маршрутки 1с,3с,160  (автобуса, трамвая), рядом улица Ольги Форш, проспект Металургов. Инициативная<br><br>Условия продажи: Один собственник. Квартира находится в собственности более 5 лет. Обременений, арестов нет. подходит под ипотеку.<br><br>Агентство недвижимости «Фабрика Жилья» оказывает услуги по полному сопровождению любых сделок с недвижимостью. Оказание помощи по одобрению ипотечных займов.<br><br>#объект в нашей базе №6309399#]]>
+		</Description>
+		<ManagerName>Анна</ManagerName>
+		<EMail>rielter21@mail.ru</EMail>
+		<CompanyName>Фабрика Жилья</CompanyName>
+		<ContactPhone>+79377311515</ContactPhone>
+		<Price>890000</Price>
+		<Images>
+			<Image url="https://files.lotinfo.ru/objects/596660d71e11a750e6aa0e925b35beb9.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/32c79ac480eb4154ab23beab11ae90f6.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/5b61e516e25402f4a111b69b79b79109.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/2cbe5ba22b4fab3e8889d387eb0aee23.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/ba43334b7b8479e7e84f598c2d7832b8.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/d4663dbb47034fd21a4da5f0fbf5b325.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/af6aea2c97951011819ce8b052faf705.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/9a2943472155ce641b829facdff25a1c.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/fcaa030fcc07ddac489e16eb166e9942.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/f7ea1d7693baa7f7fa4e28f5ddf7efad.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/19e3df3df8746ef32ad6842d1239fe50.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/539be226afb693fb50c5ee2c6a5533b3.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/9470eaa28cfd63048c010be53cfe4276.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/f1b118aadfa92fd9321343d535200a8f.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/75a414c69a2a7cfb39991d863c60b3ef.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/a932c30dce82a46286aedf2b80dfadde.jpg"/>
+			<Image url="https://files.lotinfo.ru/objects/42aeb7d7ea340cc4e2d60d090dac8964.jpg"/>
+		</Images>
+		<Square>36.6</Square>
+		<Floor>1</Floor>
+		<Floors>4</Floors>
+		<HouseType>Панельный</HouseType>
+	</Ad>
+	<Ad>
 		<Id>2652376</Id>
 		<Category>Квартиры</Category>
 		<OperationType>Продам</OperationType>

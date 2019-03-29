@@ -9,7 +9,11 @@
 define('XML_FILE_DIR', plugin_dir_path(__FILE__));
 
 function getAllXml() {
-    $file = XML_FILE_DIR . '/hfxml.xml';
+
+    $all = 'all_hf_flats.xml';
+    $some = 'hfxml.xml';
+
+    $file = XML_FILE_DIR . $all;
     $xml = simplexml_load_file($file, null, LIBXML_NOCDATA);
     $xmlJson = json_encode($xml);
     $xmlArray = json_decode($xmlJson,true);
@@ -24,8 +28,12 @@ function getFlatById($flat_id) {
 function getOnlyFlats() {
     $onlyFlats = [];
     $xmlArray = getAllXml();
-    $keys = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Квартиры');
-    foreach ($keys as $key) {
+    $keysF = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Квартиры');
+    foreach ($keysF as $key) {
+        array_push($onlyFlats, $xmlArray[$key]);
+    }
+    $keysR = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Комнаты');
+    foreach ($keysR as $key) {
         array_push($onlyFlats, $xmlArray[$key]);
     }
     return $onlyFlats;
@@ -89,10 +97,6 @@ function getImagesByFlatId() {
 //}
 
 function getLasTwelveFlats() {
-    $file = XML_FILE_DIR . '/hfxml.xml';
-    $xml = simplexml_load_file($file, null, LIBXML_NOCDATA);
-    $xmlJson = json_encode($xml);
-    $xmlArray = json_decode($xmlJson,true)['Ad'];
-    $result = array_slice($xmlArray, -12, 12);
+    $result = array_slice(getAllXml(), -12, 12);
     return array_reverse($result);
 }
