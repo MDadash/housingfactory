@@ -6,18 +6,26 @@ Template Name: item
 <?php get_header() ?>
 
 <main>
+
     <section class="appartment container">
         <div class="row">
-            <div class="col-md-6 col-lg-8 appartment__ls">
-                <h2 class="appartment__title">Описание квартиры</h2>
-                <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
-                    <img src="<?php echo $img['@attributes']['url']?>">
-                <?php endforeach;?>
-                <p class="appartment__description"><?php echo getFlatById($_GET['flat_id'])['Description']; ?></p>
+            <div class="col-md-6 col-lg-8 appartment__rs">
+                <div class="slider__wrapper">
+                    <ul id="slider">
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="appartment__title">Описание квартиры</h2>
+                    <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
+                        <img src="<?php echo $img['@attributes']['url']?>">
+                    <?php endforeach;?>
+                    <p class="appartment__description"><?php echo getFlatById($_GET['flat_id'])['Description']; ?></p>
+                </div>
             </div>
+
             <div class="col-md-6 col-lg-4 appartment__rs">
                 <h2 class="appartment__title"><?php echo getFlatById($_GET['flat_id'])['City']; ?>,<br> <?php echo getFlatById($_GET['flat_id'])['Street']; ?></h2>
-                <div class="appartment__id-wrapper"><span>ID <?php echo getFlatById($_GET['flat_id'])['Id']; ?></span><a class="appartment__rooms"><?php echo getFlatById($_GET['flat_id'])['Rooms']; ?> комнатная</a></div>
+                <div class="appartment__id-wrapper"><span>ID<span><?php echo getFlatById($_GET['flat_id'])['Id']; ?></span><a class="appartment__rooms"><?php echo getFlatById($_GET['flat_id'])['Rooms']; ?> комнатная</a></div>
                 <strong class="appartment__price"><?php echo getFlatById($_GET['flat_id'])['Price']; ?> &#8381;</strong>
                 <div class="appartment__info-wr"><span class="appartment__info-title">Район:</span><?php echo getFlatById($_GET['flat_id'])['District']; ?></div>
 <!--                <div class="appartment__info-wr"><span class="appartment__info-title">Ул:</span>8-ой Воздушной Армии, дом 6 Б</div>-->

@@ -37,7 +37,6 @@ Template Name: category
                         <select name="select-district" id="select-district"
                                 class="filter__select px-1 my-1 my-lg-0 mx-1">
                             <option value="">- Выберите район -</option>
-
                         </select>
                     </div>
                 </div>
