@@ -16,9 +16,9 @@ Template Name: item
                 </div>
                 <div>
                     <h2 class="appartment__title">Описание квартиры</h2>
-                    <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
+   <!--                  <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
                         <img src="<?php echo $img['@attributes']['url']?>">
-                    <?php endforeach;?>
+                    <?php endforeach;?> -->
                     <p class="appartment__description"><?php echo getFlatById($_GET['flat_id'])['Description']; ?></p>
                 </div>
             </div>

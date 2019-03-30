@@ -4,16 +4,23 @@
         var flatsArray,
             allDistrictsArray = [],
             uniqueDistrictsArray,
-            districtsSelect = document.querySelector('#select-district');
+            districtsSelect = document.querySelector('#select-district'),
+            data = {
+                action: 'getflats'
+            };
 
-        $.ajax({
-            type: "GET",
-            url: "/wp-admin/admin-ajax.php?action=getflats",
-            success: function(response){
-                flatsArray = JSON.parse(response);
-                getAllDistricts(flatsArray);
-            }
+        $.get( my_ajax.ajaxurl, data, function(response) {
+            flatsArray = JSON.parse(response);
         });
+
+        // $.ajax({
+        //     type: "GET",
+        //     url: "/wp-admin/admin-ajax.php?action=getflats",
+        //     success: function(response){
+        //         flatsArray = JSON.parse(response);
+        //         getAllDistricts(flatsArray);
+        //     }
+        // });
 
         function getAllDistricts(arr) {
             for (var i = 0; i < arr.length; i++) {
@@ -51,13 +58,7 @@
         }
 
 
-        var data = {
-            action: 'getflats',
-        };
 
-        $.get( my_ajax.ajaxurl, data, function(response) {
-            console.log(JSON.parse(response))
-        });
 
     });
 }());
