@@ -32,9 +32,10 @@ function getNearestFlats($flat_id) {
     $flatDistrict = $flat['District'];
     $flatRooms = $flat['Rooms'];
     $flatFloors = $flat['Floors'];
+    $flatId = $flat['Id'];
 
     foreach ($allFlats as $key => $val) {
-        if ($val['District'] === $flatDistrict && $val['Rooms'] === $flatRooms && $val['Floors'] === $flatFloors) {
+        if ($val['District'] === $flatDistrict && $val['Rooms'] === $flatRooms && $val['Floors'] === $flatFloors && $val['Id'] != $flatId) {
             array_push($nearestFlats, $val);
         }
     }
