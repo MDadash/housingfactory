@@ -1,13 +1,14 @@
+<script type="text/javascript"
+        src="<?php bloginfo("template_url"); ?>/js/jquery-3.3.1.min.js"></script>
 <?php wp_enqueue_script("jquery"); ?>
 
 <?php wp_head() ?>
 
-<script type="text/javascript"
-   src="<?php bloginfo("template_url"); ?>/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-   src="<?php bloginfo("template_url"); ?>/js/scripts.js"></script>
-<script type="text/javascript"
-        src="<?php bloginfo("template_url"); ?>/js/category.js"></script>
+
+<!--<script type="text/javascript"-->
+<!--   src="--><?php //bloginfo("template_url"); ?><!--/js/scripts.js"></script>-->
+<!--<script type="text/javascript"-->
+<!--        src="--><?php //bloginfo("template_url"); ?><!--/js/category.js"></script>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

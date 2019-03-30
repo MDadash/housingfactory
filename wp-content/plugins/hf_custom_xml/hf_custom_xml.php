@@ -117,3 +117,18 @@ function getLasTwelveFlats() {
     $result = array_slice(getAllXml(), -12, 12);
     return array_reverse($result);
 }
+
+
+add_action( 'wp_enqueue_scripts', 'my_ajax_data', 99 );
+function my_ajax_data(){
+
+    wp_enqueue_script('category', plugins_url('category.js', __FILE__), ['jquery']);
+    wp_enqueue_script('scripts', plugins_url('scripts.js', __FILE__), ['jquery']);
+
+    wp_localize_script( 'category', 'my_ajax',
+        array(
+            'ajaxurl' => admin_url('admin-ajax.php')
+        )
+    );
+
+}
