@@ -1072,3 +1072,69 @@ button{
     height: 50px;
 }*/
 
+.slider__wrapper{
+    margin-bottom: 20px;
+}
+
+
+.lg-img-wrap .lg-object {
+    max-width: 1000px !important;
+/*    max-height: auto !important;
+*/
+}
+
+/*.lightSlider  li {
+    max-height: 300px;
+    object-fit: cover;
+
+}
+*/
+
+.lightSlider{
+    position: relative;
+}
+
+.lightSlider li  div {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    filter: blur(10px);
+ /*   filter: invert(75%);*/
+}
+
+.active div{
+    position: absolute;
+}
+.lightSlider  li img{
+    max-height: 300px;
+    object-fit: contain;    
+}
+
+.lg-outer .lg-item:before, .lg-outer .lg-images-wrap:before{
+    height: 0 !important;
+}
+
+
+.lSSlideOuter .lSPager.lSGallery li{
+    height: 50px; !important;
+}
+
+.lSSlideOuter .lSPager.lSGallery li img {
+    height: 100%;
+}
+
+.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item img{
+    height: 100%;
+}
+
+.lg-img-wrap{
+    height: 100%;
+}
+
+.lightSlider li img{
+    position: relative;
+    z-index: 3;
+}

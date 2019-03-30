@@ -36,44 +36,45 @@
           var id = window.location.href.split('flat_id=').pop();
 
         function initSlider(arr){
-          if (arr.length) {
-            alert(arr.length);
+          if (arr.length){
             arr.forEach( function(item) {
                     var li = document.createElement("li");
+                    var div = document.createElement("div");
+                    var img = document.createElement("img");
                     var link = item;
                     li.setAttribute("data-thumb", link);
                     li.setAttribute("data-src", link);
-                    var img = document.createElement("img");
                     img.setAttribute("src", link);
+                    div.style.backgroundImage = "url(" + link + ")";
                     li.appendChild(img);
+                    li.appendChild(div);
                     container.appendChild(li);
+                  
                 });
 
-              $('#slider').lightSlider({
-                  gallery:true,
-                  item:1,
-                  loop:true,
-                  thumbItem:9,
-                  slideMargin:0,
-                  enableDrag: false,
-                  currentPagerPosition:'left',
-                  onSliderLoad: function(el) {
-                      el.lightGallery({
-                          selector: '#slider .lslide'
-                    });
+            $('#slider').lightSlider({
+                gallery:true,
+                item:1,
+                loop:true,
+                thumbItem:9,
+                slideMargin:0,
+                enableDrag: true,
+                autoplay :false,
+                currentPagerPosition:'middle',
+                onSliderLoad: function(el) {
+                    el.lightGallery({
+                      loop:true,
+                      selector: '#slider .lslide'
+                  });
                 }
-
-              });
+            });
           }else if(!arr.length){
             var wrapper = document.querySelector(".appartment__rs");
             var img = document.createElement("img");
             img.className = "appartment__img";
             img.src  = "http://demo.pinofran.com/demo/housingfactory/wp-content/themes/mainTheme/images/noPhoto.png";
             wrapper.insertBefore(img,wrapper.firstChild);
-            alert("noPhoto");
           }
-
-
         };
 
         var data = {
@@ -81,15 +82,11 @@
           flat_id: window.location.href.split('flat_id=').pop()
         };
 
-
         $.get( my_ajax.ajaxurl, data, function(response) {
             var arr = JSON.parse(response);
             initSlider(arr);
         });
 
-
         }
-
-
   })
 }());

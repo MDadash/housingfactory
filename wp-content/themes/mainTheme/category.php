@@ -88,7 +88,8 @@ Template Name: category
                                 <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
                                     <span class="proposals__mortgage">Ипотека</span>
                                 <?php endif ?>
-                                <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
+<!--                                <span class="proposals__rooms">--><?php //echo $flat['Rooms']; ?><!-- комнаты</span>-->
+                              <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
                                 <?php if (count($flat['Images']['Image']) >= 8) : ?>
                                     <span class="proposals__reccommend"></span>
                                 <?php endif ?>

@@ -43,7 +43,7 @@
         useLeft: false,
 
         closable: true,
-        loop: false,
+        loop: true,
         escKey: true,
         keyPress: true,
         controls: true,
@@ -51,7 +51,7 @@
         hideControlOnEnd: false,
         mousewheel: true,
 
-        getCaptionFromTitleOrAlt: true,
+        getCaptionFromTitleOrAlt: false,
 
         // .lg-item || '.lg-sub-html'
         appendSubHtmlTo: '.lg-sub-html',
@@ -1393,7 +1393,7 @@
         pause: 5000,
         progressBar: true,
         fourceAutoplay: false,
-        autoplayControls: false,
+        autoplayControls: true,
         appendAutoplayControlsTo: '.lg-toolbar'
     };
 
