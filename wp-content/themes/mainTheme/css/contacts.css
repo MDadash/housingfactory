@@ -1,6 +1,7 @@
 .container--contacts{
 	background: #fff;
 	padding: 0 25px;
+	padding-bottom: 30px;
 }
 .contacts__top--text {
 	margin-top: 15px;
