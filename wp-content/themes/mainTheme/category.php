@@ -14,20 +14,20 @@ Template Name: category
 
                     <div class="row">
                         <h2 class="filter__heading col-12 px-1">Количество комнат</h2>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href=""
-                                                                                          class="filter__option">Комната</a>
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                                                                                          class="filter__option" data-rooms="room">Комната</a>
                         </div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href=""
-                                                                                          class="filter__option">1
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                                                                                          class="filter__option filter__option--active" data-rooms="1">1
                                 комнатная</a></div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href=""
-                                                                                          class="filter__option">2
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                                                                                          class="filter__option" data-rooms="2">2
                                 комнатная</a></div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href=""
-                                                                                          class="filter__option">3
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                                                                                          class="filter__option" data-rooms="3">3
                                 комнатная</a></div>
-                        <div class="col-12 col-md-6 col-lg-3 col-xl px-1 my-1 my-lg-0"><a href=""
-                                                                                          class="filter__option">4 и
+                        <div class="col-12 col-md-6 col-lg-3 col-xl px-1 my-1 my-lg-0"><a href="#"
+                                                                                          class="filter__option" data-rooms="4">4 и
                                 более комнатная</a></div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ Template Name: category
                         <h2 class="filter__heading col-12 px-1">Район</h2>
                         <select name="select-district" id="select-district"
                                 class="filter__select px-1 my-1 my-lg-0 mx-1">
-                            <option value="">- Выберите район -</option>
+<!--                            <option value="">- Выберите район -</option>-->
                         </select>
                     </div>
                 </div>

@@ -569,7 +569,8 @@ footer img {
 }
 .filter__option:hover,
 .filter__option:focus,
-.filter__option:active {
+.filter__option:active,
+.filter__option--active {
 	background-color: #8fb83f;
 	color: #fff;
 	border-color: #8fb83f;

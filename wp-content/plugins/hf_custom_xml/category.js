@@ -4,15 +4,21 @@
         var flatsArray,
             districtsArray = [],
             districtsSelect = document.querySelector('#select-district'),
+            roomsLinks = document.querySelectorAll('.filter__option'),
+            flatsOnDom,
+            flatsOnDomRoomSorting,
             data = {
                 action: 'getflats'
             };
+        if (districtsSelect) {
+            $.get( my_ajax.ajaxurl, data, function(response) {
+                flatsArray = JSON.parse(response);
+                getDistricts(flatsArray);
+                flatsOnDom = fillFlatInfo(flatsArray);
+                flatsOnDomRoomSorting = filterWhenPageIsLoading();
+            });
+        }
 
-        $.get( my_ajax.ajaxurl, data, function(response) {
-            flatsArray = JSON.parse(response);
-            getDistricts(flatsArray);
-            fillFlatInfo(flatsArray);
-        });
 
 //   get and fill districts from flats array
         function getDistricts(flatsArr) {
@@ -45,26 +51,32 @@
 
 //   fillFlatPageInfo
          function fillFlatInfo (flatsArr) {
-            console.log(flatsArr);
+
             var flatList = document.querySelector('.proposals__item-list');
 
              for (var i = 0; i < flatsArr.length; i++) {
                 var flatContainer = document.createElement('div');
                 flatContainer.className = 'proposals__item col-sm-6 col-lg-4';
+                var dataDistrictAttr = flatsArr[i]['District'];
+                flatContainer.setAttribute('data-district', dataDistrictAttr);
                 var imgWrapper = document.createElement('div');
                 imgWrapper.className = 'proposals__img-wrapper';
                 var proposalsLink = document.createElement('a');
                 proposalsLink.innerText = 'Посмотреть';
                 proposalsLink.className = 'proposals__link';
-                // proposalsLink.href =  window.location.href.split('/').shift() + '/?page=7&flat_id=' + flatsArr[i]['Id'] + '; ?>';
+                proposalsLink.href = '/?page_id=7&flat_id=' + flatsArr[i]['Id'];
                 var proposalsImg = document.createElement('img');
                 proposalsImg.className = 'proposals__img';
                 proposalsImg.alt = flatsArr[i]['Street'];
 
                 if (flatsArr[i]['Images'].length == 0) {
-                    proposalsImg.src = '<?php bloginfo(\'template_url\') ?>/images/noimage.jpg';
+                    proposalsImg.src = 'wp-content/themes/mainTheme/images/noimage.jpg';
                 } else {
-                    proposalsImg.src = flatsArr[i]['Images']['Image'][0]['@attributes']['url'];
+                    if (flatsArr[i]['Images']['Image'][0]) {
+                        proposalsImg.src = flatsArr[i]['Images']['Image'][0]['@attributes']['url'];
+                    } else {
+                        proposalsImg.src = flatsArr[i]['Images']['Image']['@attributes']['url'];
+                    }
                 }
 
                 if (flatsArr[i]['Description'].indexOf('ипотек')) {
@@ -75,9 +87,19 @@
 
                 var proposalsRooms = document.createElement('span');
                 proposalsRooms.className = 'proposals__rooms';
-                proposalsRooms.innerText = flatsArr[i]['Rooms'] + ' комнаты';
+                if (flatsArr[i]['Rooms'] == 1) {
+                    proposalsRooms.innerText = flatsArr[i]['Rooms'] + ' комната';
+                } else if (!flatsArr[i]['Rooms']) {
+                    proposalsRooms.innerText = ' комнаты';
+                } else {
+                    if (+flatsArr[i]['Rooms']) {
+                        proposalsRooms.innerText = flatsArr[i]['Rooms'] + ' комнаты';
+                    } else {
+                        proposalsRooms.innerText = flatsArr[i]['Rooms'];
+                    }
+                }
 
-                if (flatsArr[i]['Images']['Image'].length >= 8) {
+                if (flatsArr[i]['Images'].length != 0 && flatsArr[i]['Images']['Image'].length >= 8) {
                     var proposalsReccommend = document.createElement('span');
                     proposalsReccommend.className = 'proposals__reccommend';
                 }
@@ -148,17 +170,107 @@
 
                  flatList.appendChild(flatContainer);
             }
+
+            return document.querySelectorAll('.proposals__item');
          }
 
 
          // filter by select district
-         // function districtFilter (flatsArray) {
-         //     var sel=document.getElementById('select-district').selectedIndex;
-         //     console.log(sel);
-         // }
+        if (districtsSelect) {
+            districtsSelect.onchange = function () {
+                console.log(flatsOnDomRoomSorting)
+                filterByDistrict(flatsOnDomRoomSorting);
+            }
+        }
+
+        function filterByDistrict(flatsaArray) {
+            console.log(districtsSelect.value);
+            for (var i = 0; i < flatsaArray.length; i++) {
+                if (districtsSelect.value != flatsaArray[i].getAttribute('data-district')) {
+
+                    flatsaArray[i].style.display = 'none';
+                } else {
+                    flatsaArray[i].style.display = 'block';
+                }
+            }
+        }
+
+        // filter by rooms number
+
+        document.addEventListener('click', function () {
+
+            if (!event.target.classList.contains('filter__option')) return;
+            event.target.classList.add('filter__option--active');
+            var links = document.querySelectorAll('.filter__option');
+            for (var i = 0; i < links.length; i++) {
+                if (links[i] === event.target) continue;
+                links[i].classList.remove('filter__option--active');
+            }
+
+        }, false);
+
+        for (var i = 0; i < roomsLinks.length; i++) {
+
+            roomsLinks[i].onclick = function() {
+                var showingFlats = [];
+                for (var j = 0; j < flatsOnDom.length; j++) {
+
+                    var roomsNumber = flatsOnDom[j].querySelector('tr:nth-child(2) .proposals__value').innerText;
+
+                    if (this.getAttribute('data-rooms') ==  'room') {
+                        if (+roomsNumber) {
+                            flatsOnDom[j].style.display = 'none';
+                        } else {
+                            flatsOnDom[j].style.display = 'block';
+                            showingFlats.push(flatsOnDom[j]);
+                        }
+                    } else {
+                        if (this.getAttribute('data-rooms') !==  roomsNumber) {
+                            flatsOnDom[j].style.display = 'none';
+                        } else {
+                            flatsOnDom[j].style.display = 'block';
+                            showingFlats.push(flatsOnDom[j]);
+                        }
+                    }
+                }
+                flatsOnDomRoomSorting = showingFlats;
+                filterByDistrict(showingFlats);
+            }
+        }
+
+        var activeRoomsOption = document.querySelector('.filter__option--active');
+
+        function filterWhenPageIsLoading () {
+
+            var showingFlats = [];
+            for (var j = 0; j < flatsOnDom.length; j++) {
+                var roomsNumber = flatsOnDom[j].querySelector('tr:nth-child(2) .proposals__value').innerText;
+
+                if (activeRoomsOption.getAttribute('data-rooms') ==  'room') {
+                    if (+roomsNumber) {
+                        flatsOnDom[j].style.display = 'none';
+                    } else {
+                        flatsOnDom[j].style.display = 'block';
+                        showingFlats.push(flatsOnDom[j]);
+                    }
+                } else {
+                    if (activeRoomsOption.getAttribute('data-rooms') !==  roomsNumber) {
+                        flatsOnDom[j].style.display = 'none';
+                    } else {
+                        flatsOnDom[j].style.display = 'block';
+                        showingFlats.push(flatsOnDom[j]);
+                    }
+                }
+            }
+            filterByDistrict(showingFlats);
+            return showingFlats;
+        }
+
+        function showMoreButton(flatsArr) {
+
+
+        }
+        showMoreButton (flatsOnDomRoomSorting);
 
     });
 }());
-
-
-
