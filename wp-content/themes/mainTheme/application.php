@@ -17,6 +17,9 @@ Template Name: application
             </div>
         </div>
         <div class="application__main">
+            <div>
+                <embed height="0" src="<?php bloginfo('template_url') ?>/images/123.mp3">
+            </div>
             <h3 class="application__main--head">Хотите взять ипотеку или узнать какую Вам сумму одобрит банк? </h3>
             <div class="row">
                 <div class="col-md-6 application__main--one">
@@ -56,7 +59,7 @@ Template Name: application
         </div>
 
         
-            
+
 
                  
     </section>    
