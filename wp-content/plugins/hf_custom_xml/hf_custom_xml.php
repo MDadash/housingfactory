@@ -9,27 +9,15 @@
 define('XML_FILE_DIR', plugin_dir_path(__FILE__));
 
 //add_action('wp_ajax_nopriv_loadfile', 'writeNewFlatsToFile');
-//
-//function writeNewFlatsToFile(): void {
-//    $fd = fopen(XML_FILE_DIR . 'all_flats.xml', 'w');
-//    $str = simplexml_load_file('https://export.lotinfo.ru/c8be8a2c3b0cdb73df3c599ebc0d3540', null, LIBXML_NOCDATA);
-//    fwrite($fd, json_encode($str));
-//    fclose($fd);
-//}
+
+function writeNewFlatsToFile(): void {
+    $fd = fopen(XML_FILE_DIR . 'all_flats.xml', 'w');
+    $str = simplexml_load_file('https://export.lotinfo.ru/c8be8a2c3b0cdb73df3c599ebc0d3540', null, LIBXML_NOCDATA);
+    fwrite($fd, json_encode($str));
+    fclose($fd);
+}
 
 function getAllXml() {
-
-//    $all = 'all_hf_flats.xml';
-//    $some = 'hfxml.xml';
-//    $url = 'https://export.lotinfo.ru/c8be8a2c3b0cdb73df3c599ebc0d3540';
-//
-//    $file = XML_FILE_DIR . $all;
-//    $xml = simplexml_load_file($file, null, LIBXML_NOCDATA);
-//    $xmlJson = json_encode($xml);
-//    $xmlArray = json_decode($xmlJson,true);
-//    return $xmlArray['Ad'];
-
-//    writeNewFlatsToFile();
     $str = file_get_contents(XML_FILE_DIR . 'all_flats.xml');
     return json_decode($str, true)['Ad'];
 
