@@ -13,6 +13,7 @@
         if (districtsSelect) {
             $.get( my_ajax.ajaxurl, data, function(response) {
                 flatsArray = JSON.parse(response);
+
                 getDistricts(flatsArray);
                 flatsOnDom = fillFlatInfo(flatsArray);
                 flatsOnDomRoomSorting = filterWhenPageIsLoading();
@@ -38,16 +39,23 @@
                         districtsArray.push(currentDistrict);
                     }
                 }
-            fillDistrictSelect(districtsArray);
-        }
 
-        function fillDistrictSelect(districtsArr) {
-            for (var i = 0; i < districtsArr.length; i++) {
+            // fillDistrictSelect(districtsArray);
+
+            for (var i = 0; i < districtsArray.length; i++) {
                 var option = document.createElement('option');
-                option.value = option.innerText = districtsArr[i];
+                option.value = option.innerText = districtsArray[i];
                 districtsSelect.appendChild(option);
             }
         }
+
+        // function fillDistrictSelect(districtsArr) {
+        //     for (var i = 0; i < districtsArr.length; i++) {
+        //         var option = document.createElement('option');
+        //         option.value = option.innerText = districtsArr[i];
+        //         districtsSelect.appendChild(option);
+        //     }
+        // }
 
 //   fillFlatPageInfo
          function fillFlatInfo (flatsArr) {
@@ -183,14 +191,14 @@
             }
         }
 
-        function filterByDistrict(flatsaArray) {
+        function filterByDistrict(flatsArray) {
             console.log(districtsSelect.value);
-            for (var i = 0; i < flatsaArray.length; i++) {
-                if (districtsSelect.value != flatsaArray[i].getAttribute('data-district')) {
+            for (var i = 0; i < flatsArray.length; i++) {
+                if (districtsSelect.value != flatsArray[i].getAttribute('data-district')) {
 
-                    flatsaArray[i].style.display = 'none';
+                    flatsArray[i].style.display = 'none';
                 } else {
-                    flatsaArray[i].style.display = 'block';
+                    flatsArray[i].style.display = 'block';
                 }
             }
         }
@@ -266,9 +274,34 @@
             return showingFlats;
         }
 
+
+        // function filterWhenPageIsLoading(activeRoomsOption, flatsArray) {
+        //
+        //     var showingFlats = [];
+        //     for (var j = 0; j < flatsArray.length; j++) {
+        //         var roomsNumber = flatsArray[j].querySelector('tr:nth-child(2) .proposals__value').innerText;
+        //
+        //         if (activeRoomsOption.getAttribute('data-rooms') ==  'room') {
+        //             if (+roomsNumber) {
+        //                 flatsArray[j].style.display = 'none';
+        //             } else {
+        //                 flatsArray[j].style.display = 'block';
+        //                 showingFlats.push(flatsArray[j]);
+        //             }
+        //         } else {
+        //             if (activeRoomsOption.getAttribute('data-rooms') !==  roomsNumber) {
+        //                 flatsArray[j].style.display = 'none';
+        //             } else {
+        //                 flatsArray[j].style.display = 'block';
+        //                 showingFlats.push(flatsArray[j]);
+        //             }
+        //         }
+        //     }
+        //     filterByDistrict(showingFlats);
+        //     return showingFlats;
+        // }
+
         function showMoreButton(flatsArr) {
-
-
         }
         showMoreButton (flatsOnDomRoomSorting);
 
