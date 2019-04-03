@@ -11,22 +11,21 @@ Template Name: category
         <div class="container container--articles">
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-9">
-
                     <div class="row">
                         <h2 class="filter__heading col-12 px-1">Количество комнат</h2>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option" data-rooms="room">Комната</a>
                         </div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option filter__option--active" data-rooms="1">1
                                 комнатная</a></div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option" data-rooms="2">2
                                 комнатная</a></div>
-                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="#"
+                        <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option" data-rooms="3">3
                                 комнатная</a></div>
-                        <div class="col-12 col-md-6 col-lg-3 col-xl px-1 my-1 my-lg-0"><a href="#"
+                        <div class="col-12 col-md-6 col-lg-3 col-xl px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option" data-rooms="4">4 и
                                 более комнатная</a></div>
                     </div>
@@ -84,7 +83,6 @@ Template Name: category
         </section>
 
         <a class="btn-scroll">Наверх</a>
-
     </main>
 
     <?php get_footer() ?>
