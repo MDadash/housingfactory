@@ -17,7 +17,7 @@ Template Name: category
                                                                                           class="filter__option" data-rooms="room">Комната</a>
                         </div>
                         <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
-                                                                                          class="filter__option filter__option--active" data-rooms="1">1
+                                                                                          class="filter__option" data-rooms="1">1
                                 комнатная</a></div>
                         <div class="col-12 col-sm-6 col-lg col-xl-2 px-1 my-1 my-lg-0"><a href="javascript:void(0);"
                                                                                           class="filter__option" data-rooms="2">2
@@ -38,6 +38,10 @@ Template Name: category
 <!--                            <option value="">- Выберите район -</option>-->
                         </select>
                     </div>
+                </div>
+
+                <div class="col-12">
+                  <button type="button" id="searchButton">Поиск</button>
                 </div>
             </div>
         </div>
@@ -68,6 +72,10 @@ Template Name: category
             <div class="proposals__item-list row">
 
             </div>
+
+          <div class="col-12">
+            <button type="button" id="showMore">Показать еще</button>
+          </div>
         </section>
 
         <section class="category__additionaltext">
