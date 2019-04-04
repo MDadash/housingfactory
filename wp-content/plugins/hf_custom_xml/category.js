@@ -2,6 +2,7 @@
     $(document).ready(function () {
 
         var globalFlats,
+            flatList = document.querySelector('.proposals__item-list'),
             districtsSelect = document.querySelector('#select-district'),
             showMorebutton = document.getElementById('showMore'),
             searchButton = document.getElementById('searchButton'),
@@ -76,8 +77,8 @@
                     actualFlatsArray.push(showingFlatsByRoomsQuantity[i]);
                 }
             }
-            console.log(actualFlatsArray);
-            // localStorage.JSON.stringify(users);
+
+            //localStorage.JSON.stringify(users);
             return actualFlatsArray;
         }
 
@@ -125,7 +126,6 @@
 
 //  view actual flats on the page
         function viewFlats (flatsArr) {
-            var flatList = document.querySelector('.proposals__item-list');
 
             // for (var i = 0; i < flatsArr.length; i++) {
                 var flatContainer = document.createElement('div');
@@ -250,7 +250,6 @@
 //  show next 12 elements
         function showMoreOption (flatsArray, startIndex, endIndex) {
             for (var i = startIndex; i < endIndex; i++) {
-
                 viewFlats(flatsArray[i]);
             }
         }
@@ -258,11 +257,11 @@
 //  filter and buttons events
         showMorebutton.onclick = function() {
             showMoreStep += 12;
-            // if (!window.location.href.split('page_id=7053').pop()) {
-            //     showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
-            // } else {
-            //     showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
-            // }
+            if (!window.location.href.split('page_id=7053').pop()) {
+                showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
+            } else {
+                showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
+            }
             showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
         }
 
@@ -288,7 +287,9 @@
             getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
 
             console.log(actualFlatsArray);
-            showMoreOption(actualFlatsArray);
+            console.log(flatList);
+            flatList.innerHTML = '';
+            showMoreOption(actualFlatsArray,  showMoreStep, (showMoreStep + 12));
 
             // activeRoomsOption.classList.add('filter__option--active');
             // districtsSelect.options['selectedIndex'] = districtIndex;
@@ -296,3 +297,7 @@
 
     });
 }());
+
+
+
+// ошибка когда элементов меньше 12 или нет вообще
