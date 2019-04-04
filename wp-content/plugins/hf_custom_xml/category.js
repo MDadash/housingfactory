@@ -21,14 +21,17 @@
         if (districtsSelect) {
             if (!window.location.href.split('page_id=7053').pop() || !localStorage.getItem('globalFlats')) {
                 $.get( my_ajax.ajaxurl, data, function(response) {
-                    console.log(response);
                     localStorage.setItem('globalFlats', response);
                 });
             }
 
-            globalFlats = JSON.parse(localStorage.getItem('globalFlats'));
-            getAndShowDistricts(globalFlats);
-            showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
+            $( document ).ajaxComplete(function() {
+                globalFlats = JSON.parse(localStorage.getItem('globalFlats'));
+                getAndShowDistricts(globalFlats);
+                showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
+            });
+
+
         }
 
 //  set page url
@@ -67,6 +70,7 @@
                 }
             }
 
+            actualFlatsArray = [];
             for (var i = 0; i < showingFlatsByRoomsQuantity.length; i++) {
                 if (showingFlatsByRoomsQuantity[i]['District'] == activeDistrict) {
                     actualFlatsArray.push(showingFlatsByRoomsQuantity[i]);
