@@ -40,8 +40,8 @@ Template Name: category
                     </div>
                 </div>
 
-                <div class="col-12">
-                  <button type="button" id="searchButton">Поиск</button>
+                <div class="col-12 text-center">
+                  <button type="button" id="searchButton" class="search-button mt-3">Поиск</button>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@ Template Name: category
         </div>
     </section>
 
-    <main class="main_page">
+<!--    <main class="main_page">-->
         <section class="proposals container">
             <div class="proposals__wrapper col-sm-12">
                 <div class="row">
@@ -73,8 +73,8 @@ Template Name: category
 
             </div>
 
-          <div class="col-12">
-            <button type="button" id="showMore">Показать еще</button>
+          <div class="col-12 text-center">
+            <button type="button" id="showMore" class="show-more">Показать еще</button>
           </div>
         </section>
 

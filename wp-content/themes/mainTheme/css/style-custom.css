@@ -583,6 +583,34 @@ footer img {
 	font-size: 14px;
 	width: 100%;
 }
+.category__filter .nice-select {
+	width: 100%;
+	padding: 0px;
+	padding-left: 15px !important;
+}
+.search-button {
+	/*border: 1px solid #d2e4f5;*/
+	padding: 12.5px 45px;
+	color: #314a6e;
+	background-color: #9dca48;
+	color: #fff;
+	/*padding: 10px 15px;*/
+}
+.search-button:hover {
+	text-decoration: underline;
+}
+
+.show-more {
+	background-color: #ebf0f6;
+	padding: 15px 25px;
+	border-radius: 40px;
+	color: #4987b8;
+	text-decoration: underline;
+	/*text-decoration-style: dashed;*/
+}
+.show-more:hover {
+	text-decoration: none;
+}
 
 .category__additionaltext {
 	line-height: 1.2;

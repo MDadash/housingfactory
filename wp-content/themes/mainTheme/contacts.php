@@ -62,7 +62,7 @@ Template Name: contacts
     </section>    
 </main>
 
-<div class="modal" id="modal-callback">
+<!-- <div class="modal" id="modal-callback">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -92,6 +92,6 @@ Template Name: contacts
         </div>
     </div>
 </div>
-
+ -->
 
 <?php get_footer() ?>

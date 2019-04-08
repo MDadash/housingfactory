@@ -10,7 +10,6 @@
  */
 
 ?>
-
 	<footer class="footer">
 		<div class="container">
 			<div class="row text-center text-md-left">
@@ -53,8 +52,9 @@
 	
 
 <?php wp_footer(); ?>
+  <?php echo do_shortcode('[contact-form-7 id="7107" title="sell"]'); ?>    
 
-<div class="modal modal-sell" id="modal-sale">
+<!-- <div class="modal modal-sell" id="modal-sale">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -106,7 +106,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 </body>
 </html>

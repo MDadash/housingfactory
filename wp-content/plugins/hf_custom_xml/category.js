@@ -1,6 +1,7 @@
 (function () {
     $(document).ready(function () {
 
+
         var globalFlats,
             flatList = document.querySelector('.proposals__item-list'),
             districtsSelect = document.querySelector('#select-district'),
@@ -8,11 +9,12 @@
             searchButton = document.getElementById('searchButton'),
             actualFlatsArray = [],
             showMoreStep = 0,
+            roomsLinks = document.querySelectorAll('.filter__option'),
 
             roomsQuantity,
             districtIndex,
             districtsArray = [],
-            roomsLinks = document.querySelectorAll('.filter__option'),
+
             flatsOnDom,
             flatsOnDomRoomSorting,
             data = {
@@ -20,35 +22,40 @@
             };
 
         if (districtsSelect) {
-            if (!window.location.href.split('page_id=7053').pop() || !localStorage.getItem('globalFlats')) {
+            if (!window.location.href.split('page_id=7053').pop() || !sessionStorage.getItem('globalFlats')) {
                 $.get( my_ajax.ajaxurl, data, function(response) {
-                    localStorage.setItem('globalFlats', response);
+                    sessionStorage.setItem('globalFlats', response);
                 });
+                $( document ).ajaxComplete(function() {
+                    globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
+                    getAndShowDistricts(globalFlats);
+                    showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
+                });
+            } else {
+                globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
+                getAndShowDistricts(globalFlats);
+                console.log(actualFlatsArray);
+
+                getUrlParameter ();
+                // showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
+
+                var activeRoomsOption = document.querySelector('.filter__option--active'),
+                    selectedDistrictValue = districtsSelect.value;
+
+                var actFlats = getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
+                showMoreOption (actFlats, showMoreStep, (showMoreStep + 12));
             }
 
-            $( document ).ajaxComplete(function() {
-                globalFlats = JSON.parse(localStorage.getItem('globalFlats'));
-                getAndShowDistricts(globalFlats);
-                showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
-            });
+
 
 
         }
 
 //  set page url
         function setPageUrl (districtOption, roomsLink) {
-            console.log(roomsLink);
-            console.log(districtOption);
-            //
-            // if (!firstInit) {
-            //     districtIndex = districtOption.getAttribute('data-district-id');
-            // } else {
-            //     districtIndex = districtOption.options[0].getAttribute('data-district-id');
-            // }
             districtIndex = districtOption;
             roomsQuantity = roomsLink.getAttribute('data-rooms');
             window.location.href = '/?page_id=7053&roomsquantity=' + roomsQuantity + '&district=' + districtIndex;
-
         }
 
 //  sorting all flats after getting data from ajax
@@ -78,7 +85,12 @@
                 }
             }
 
-            //localStorage.JSON.stringify(users);
+            // if (sessionStorage.getItem('actualFlats')) {
+            //     sessionStorage.removeItem('actualFlats');
+            // }
+            //
+            // sessionStorage.setItem('actualFlats', JSON.stringify(actualFlatsArray));
+
             return actualFlatsArray;
         }
 
@@ -99,6 +111,14 @@
                         districtsArray.push(currentDistrict);
                     }
                 }
+                console.log(districtsArray, JSON.stringify(districtsArray));
+
+                if (!sessionStorage.getItem('districts')) {
+                    var districtsString = JSON.stringify(districtsArray);
+                    sessionStorage.setItem('districts', districtsString);
+                } else {
+                    districtsArray = JSON.parse(sessionStorage.getItem('districts'));
+                }
 
             for (var i = 0; i < districtsArray.length; i++) {
                 var option = document.createElement('option');
@@ -106,6 +126,9 @@
                 option.setAttribute('data-district-id', i);
                 districtsSelect.appendChild(option);
             }
+
+            $('#select-district').niceSelect('destroy');
+            $("#select-district").niceSelect();
         }
 
 //  sort flats by district
@@ -247,6 +270,24 @@
             // return document.querySelectorAll('.proposals__item');
         }
 
+        function getUrlParameter () {
+            var urlPartsArray = window.location.href.split('&');
+            var roomsParametr = urlPartsArray[1].split('roomsquantity=').pop();
+            var districtParametr = urlPartsArray[2].split('district=').pop();
+            console.log(roomsParametr, districtParametr);
+            for (var i = 0; i < roomsLinks.length; i++) {
+                if (roomsLinks[i].getAttribute('data-rooms') == roomsParametr) {
+                    roomsLinks[i].classList.add('filter__option--active');
+                }
+                    districtsSelect.options.selectedIndex = districtParametr;
+                $('#select-district').niceSelect('destroy');
+                $("#select-district").niceSelect();
+
+
+
+            }
+        }
+
 //  show next 12 elements
         function showMoreOption (flatsArray, startIndex, endIndex) {
             for (var i = startIndex; i < endIndex; i++) {
@@ -262,7 +303,7 @@
             } else {
                 showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
             }
-            showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
+            // showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
         }
 
         //  set active rooms number
@@ -283,13 +324,12 @@
                 selectedDistrictValue = districtsSelect.value,
                 selectedDistrictIndex = districtsSelect.options['selectedIndex'];
 
-            // setPageUrl (selectedDistrictIndex, activeRoomsOption);
-            getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
+            setPageUrl (selectedDistrictIndex, activeRoomsOption);
+            // getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
 
             console.log(actualFlatsArray);
             console.log(flatList);
             flatList.innerHTML = '';
-            showMoreOption(actualFlatsArray,  showMoreStep, (showMoreStep + 12));
 
             // activeRoomsOption.classList.add('filter__option--active');
             // districtsSelect.options['selectedIndex'] = districtIndex;

@@ -2,7 +2,8 @@
         
 body, html {
     font-family: 'Roboto', 'Arial', sans-serif;
-    background-color: #ebf1f9;
+    /*background-color: #ebf1f9;*/
+    background-color: #f8fbff;
     height: 100%;
     color: #414447;
     font-size: 16px;
@@ -458,7 +459,7 @@ button{
     background-color: #76ad0c;
     padding: 10px 0;
     text-align: center;
-    right: 80px;
+    right: 0;
     bottom: -10px;
 }
 
@@ -1062,15 +1063,9 @@ button{
     text-decoration: underline;
 }
 
-
 .appartment__img{
     margin-bottom: 20px;
 }
-/*
-.lSGallery > li {
-    width: 50px;
-    height: 50px;
-}*/
 
 .slider__wrapper{
     margin-bottom: 20px;
@@ -1079,16 +1074,7 @@ button{
 
 .lg-img-wrap .lg-object {
     max-width: 1000px !important;
-/*    max-height: auto !important;
-*/
 }
-
-/*.lightSlider  li {
-    max-height: 300px;
-    object-fit: cover;
-
-}
-*/
 
 .lightSlider{
     position: relative;
@@ -1102,7 +1088,6 @@ button{
     left: 0;
     background-size: contain;
     filter: blur(10px);
- /*   filter: invert(75%);*/
 }
 
 .active div{
@@ -1137,4 +1122,52 @@ button{
 .lightSlider li img{
     position: relative;
     z-index: 3;
+    min-height: 300px;
+}
+
+.lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object{
+    min-height: 100%;
+    object-fit: contain;
+}
+
+
+.lSSlideWrapper .lSSlide{
+    height: 300px !important;
+}
+
+.container--application{
+    padding-bottom: 40px;
+}
+
+@media (max-width: 991px){
+.a.application__btn {
+    margin-left: 0;
+    }
+}
+
+.input-group  > p {
+    flex-grow: 1;
+}
+
+#wpcf7-f42-o2 label{
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#wpcf7-f42-o2 {
+    margin-bottom: 20px;
+}
+.form-group  .nice-select{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.nice-select .option{
+    min-height: 30px !important;
+    line-height: 30px !important;
+}
+
+.nice-select .list,
+.nice-select .list li{
+    width: 100%;
 }

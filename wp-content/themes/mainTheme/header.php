@@ -4,10 +4,12 @@
         src="<?php bloginfo("template_url"); ?>/js/lightgallery.js"></script>
 <script type="text/javascript"
         src="<?php bloginfo("template_url"); ?>/js/lightslider.js"></script>
+<script type="text/javascript"
+        src="<?php bloginfo("template_url"); ?>/js/jquery.nice-select.min.js"></script>
 <?php wp_enqueue_script("jquery"); ?>
 
-<?php wp_head() ?>
 
+<?php wp_head() ?>
 <!--<script type="text/javascript"-->
 <!--   src="--><?php //bloginfo("template_url"); ?><!--/js/scripts.js"></script>-->
 <!--<script type="text/javascript"-->
@@ -64,9 +66,8 @@
 			</div>
 		</nav>
 	</header>
-
-
-	<div class="modal" id="modal-callback">
+  <?php echo do_shortcode('[contact-form-7 id="7106" title="callback"]'); ?>    
+<!-- 	<div class="modal" id="modal-callback">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -95,4 +96,4 @@
                 </div>
             </div>
         </div>
-    </div>
+</div> -->
