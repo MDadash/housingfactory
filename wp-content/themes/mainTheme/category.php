@@ -42,6 +42,7 @@ Template Name: category
 
                 <div class="col-12 text-center">
                   <button type="button" id="searchButton" class="search-button mt-3">Поиск</button>
+                  <p class="filter__message">Выберите, пожалуйста, количество комнат</p>
                 </div>
             </div>
         </div>
@@ -71,10 +72,14 @@ Template Name: category
             </div>
             <div class="proposals__item-list row">
 
+
+              <div class="col-12 proposals__noitem">
+                <p class="proposals__noitem--text">В нашей базе нет квартир с такими параметрами</p>
+              </div>
             </div>
 
           <div class="col-12 text-center">
-            <button type="button" id="showMore" class="show-more">Показать еще</button>
+            <button type="button" id="showMore" class="show-more"><span class="show-more--border">Показать еще</span></button>
           </div>
         </section>
 

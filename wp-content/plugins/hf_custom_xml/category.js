@@ -1,7 +1,6 @@
 (function () {
     $(document).ready(function () {
 
-
         var globalFlats,
             flatList = document.querySelector('.proposals__item-list'),
             districtsSelect = document.querySelector('#select-district'),
@@ -20,7 +19,7 @@
             data = {
                 action: 'getflats'
             };
-
+        console.log(districtsSelect);
         if (districtsSelect) {
             if (!window.location.href.split('page_id=7053').pop() || !sessionStorage.getItem('globalFlats')) {
                 $.get( my_ajax.ajaxurl, data, function(response) {
@@ -29,7 +28,14 @@
                 $( document ).ajaxComplete(function() {
                     globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
                     getAndShowDistricts(globalFlats);
-                    showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
+                    if(window.location.href.split('page_id=7053').pop()){
+                        getUrlParameter ();
+                        showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
+                    } else {
+                        showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
+                    }
+
+
                 });
             } else {
                 globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
@@ -45,10 +51,6 @@
                 var actFlats = getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
                 showMoreOption (actFlats, showMoreStep, (showMoreStep + 12));
             }
-
-
-
-
         }
 
 //  set page url
@@ -63,20 +65,18 @@
             var showingFlatsByRoomsQuantity = [];
 
             for (var j = 0; j < flatsArray.length; j++) {
-                var roomsNumber = flatsArray[j]['Rooms'];
-
-                if (activeLink.getAttribute('data-rooms') == 'room') {
-                    if (+roomsNumber) {
-                    } else {
-                        showingFlatsByRoomsQuantity.push(flatsArray[j]);
-                    }
+                if (flatsArray[j]['Category'] == 'Комнаты' && activeLink.getAttribute('data-rooms') == 'room') {
+                    showingFlatsByRoomsQuantity.push(flatsArray[j]);
                 } else {
-                    if (activeLink.getAttribute('data-rooms') !== roomsNumber) {
-                    } else {
+                    var roomsNumber = flatsArray[j]['Rooms'];
+                    if (activeLink.getAttribute('data-rooms') == roomsNumber) {
                         showingFlatsByRoomsQuantity.push(flatsArray[j]);
                     }
                 }
+
+
             }
+            console.log(showingFlatsByRoomsQuantity, 'rommssorting');
 
             actualFlatsArray = [];
             for (var i = 0; i < showingFlatsByRoomsQuantity.length; i++) {
@@ -283,27 +283,47 @@
                 $('#select-district').niceSelect('destroy');
                 $("#select-district").niceSelect();
 
-
+                console.log('get it');
 
             }
         }
 
 //  show next 12 elements
         function showMoreOption (flatsArray, startIndex, endIndex) {
+            console.log(flatsArray);
+            if (flatsArray.length) {
+                document.querySelector('.proposals__noitem').style.display = 'none';
+            } else {
+                document.querySelector('.proposals__noitem').style.display = 'block';
+            }
+
             for (var i = startIndex; i < endIndex; i++) {
-                viewFlats(flatsArray[i]);
+                if (flatsArray[i]) {
+                    viewFlats(flatsArray[i]);
+                    if (i ==  endIndex) {
+                        showMorebutton.style.display="none";
+                    } else {
+                        showMorebutton.style.display="inline-block";
+                    }
+                } else {
+                    showMorebutton.style.display="none";
+                    break;
+                }
+
             }
         }
 
 //  filter and buttons events
-        showMorebutton.onclick = function() {
-            showMoreStep += 12;
-            if (!window.location.href.split('page_id=7053').pop()) {
-                showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
-            } else {
-                showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
+        if (showMorebutton) {
+            showMorebutton.onclick = function () {
+                showMoreStep += 12;
+                if (!window.location.href.split('page_id=7053').pop()) {
+                    showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
+                } else {
+                    showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
+                }
+                // showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
             }
-            // showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
         }
 
         //  set active rooms number
@@ -319,20 +339,18 @@
 
         }, false);
 
-        searchButton.onclick = function() {
-            var activeRoomsOption = document.querySelector('.filter__option--active'),
-                selectedDistrictValue = districtsSelect.value,
-                selectedDistrictIndex = districtsSelect.options['selectedIndex'];
+        if (searchButton) {
+            searchButton.onclick = function () {
+                var activeRoomsOption = document.querySelector('.filter__option--active'),
+                    selectedDistrictValue = districtsSelect.value,
+                    selectedDistrictIndex = districtsSelect.options['selectedIndex'];
 
-            setPageUrl (selectedDistrictIndex, activeRoomsOption);
-            // getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
-
-            console.log(actualFlatsArray);
-            console.log(flatList);
-            flatList.innerHTML = '';
-
-            // activeRoomsOption.classList.add('filter__option--active');
-            // districtsSelect.options['selectedIndex'] = districtIndex;
+                if (!activeRoomsOption) {
+                    document.querySelector('.filter__message').style.display = 'block';
+                } else {
+                    setPageUrl(selectedDistrictIndex, activeRoomsOption);
+                }
+            }
         }
 
     });
@@ -340,4 +358,11 @@
 
 
 
-// ошибка когда элементов меньше 12 или нет вообще
+// - ошибка когда элементов меньше 12 или нет вообще - исправлено
+// когда переходишь сразу по url определенной выборки, квартиры фильтруются только со второго раза
+// - ошибка селекта на других страницых, где его нет - исправлено
+// - скрыть кнопку показать еще когда квартир нет или массив показан полностью - исправлено
+// - показать блок .proposals__noitem когда нет отображаемых квартир по выбранным в фильре парамметрам - добавлено
+
+// нажатие на кнопку поиск, когда не выбрано количество комнат - выдавать сообщение "выберите, пожалуйста количество комнат"
+// подписи для страницы каждого района -
