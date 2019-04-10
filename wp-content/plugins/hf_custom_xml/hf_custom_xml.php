@@ -60,14 +60,32 @@ function getOnlyFlats() {
     return $onlyFlats;
 }
 
+function getOnlyHouses() {
+    $onlyHouses = [];
+    $xmlArray = getAllXml();
+    $keysH = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Дома, дачи, коттеджи');
+    foreach ($keysH as $key) {
+        array_push($onlyHouses, $xmlArray[$key]);
+    }
+    return $onlyHouses;
+}
+
 add_action('wp_ajax_getflats', 'getFlatsForAjax');
 add_action('wp_ajax_nopriv_getflats', 'getFlatsForAjax');
+
+add_action('wp_ajax_gethouses', 'getHousesForAjax');
+add_action('wp_ajax_nopriv_gethouses', 'getHousesForAjax');
 
 add_action('wp_ajax_getimagesbyflat', 'getImagesByFlatId');
 add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
 
 function getFlatsForAjax() {
     echo json_encode(getOnlyFlats());
+    wp_die();
+}
+
+function getHousesForAjax() {
+    echo json_encode(getOnlyHouses());
     wp_die();
 }
 

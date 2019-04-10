@@ -2,6 +2,7 @@
     $(document).ready(function () {
 
         var globalFlats,
+            globalHouses,
             flatList = document.querySelector('.proposals__item-list'),
             districtsSelect = document.querySelector('#select-district'),
             showMorebutton = document.getElementById('showMore'),
@@ -14,13 +15,14 @@
             districtIndex,
             districtsArray = [],
 
-            flatsOnDom,
-            flatsOnDomRoomSorting,
             data = {
                 action: 'getflats'
+            },
+            datahouses = {
+                action: 'gethouses'
             };
-        console.log(districtsSelect);
-        if (districtsSelect) {
+
+        if (districtsSelect && window.location.href.split('page_id=').pop() !== '9') {
             if (!window.location.href.split('page_id=7053').pop() || !sessionStorage.getItem('globalFlats')) {
                 $.get( my_ajax.ajaxurl, data, function(response) {
                     sessionStorage.setItem('globalFlats', response);
@@ -34,8 +36,6 @@
                     } else {
                         showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
                     }
-
-
                 });
             } else {
                 globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
@@ -51,7 +51,18 @@
                 var actFlats = getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
                 showMoreOption (actFlats, showMoreStep, (showMoreStep + 12));
             }
-        }
+        } else if (districtsSelect && window.location.href.split('page_id=').pop() == '9') {
+            document.querySelector('.category__filter').style.display = 'none';
+            $.get( my_ajax.ajaxurl, datahouses, function(response) {
+            sessionStorage.setItem('globalHouses', response);
+        });
+        $( document ).ajaxComplete(function() {
+            globalHouses = JSON.parse(sessionStorage.getItem('globalHouses'));
+            console.log(globalHouses);
+            showMoreOption (globalHouses, showMoreStep, (showMoreStep + 12));
+
+        });
+    }
 
 //  set page url
         function setPageUrl (districtOption, roomsLink) {
@@ -73,8 +84,6 @@
                         showingFlatsByRoomsQuantity.push(flatsArray[j]);
                     }
                 }
-
-
             }
             console.log(showingFlatsByRoomsQuantity, 'rommssorting');
 
@@ -131,22 +140,6 @@
             $("#select-district").niceSelect();
         }
 
-//  sort flats by district
-//         function getActualFlatsArray (flatsArray, activeDistrict) {
-//             for (var i = 0; i < flatsArray.length; i++) {
-//                 if (flatsArray[i]['District'] == activeDistrict) {
-//                     actualFlatsArray.push(flatsArray[i]);
-//                 }
-//             }
-//         }
-//
-// //  sort flats when clicking on rooms quantity link
-//         for (var i = 0; i < roomsLinks.length; i++) {
-//             roomsLinks[i].onclick = function (event) {
-//                 getSortingByRoomsArray(globalFlats, event.target);
-//             }
-//         }
-
 //  view actual flats on the page
         function viewFlats (flatsArr) {
 
@@ -183,17 +176,23 @@
 
                 var proposalsRooms = document.createElement('span');
                 proposalsRooms.className = 'proposals__rooms';
-                if (flatsArr['Rooms'] == 1) {
-                    proposalsRooms.innerText = flatsArr['Rooms'] + ' комната';
-                } else if (!flatsArr['Rooms']) {
-                    proposalsRooms.innerText = ' комнаты';
+                if (flatsArr['Category'] == 'Дома, дачи, коттеджи') {
+                    proposalsRooms.innerText = flatsArr['ObjectType'];
+                    proposalsRooms.style.textTransform = 'Capitalize';
                 } else {
-                    if (+flatsArr['Rooms']) {
-                        proposalsRooms.innerText = flatsArr['Rooms'] + ' комнаты';
+                    if (flatsArr['Rooms'] == 1) {
+                        proposalsRooms.innerText = flatsArr['Rooms'] + ' комната';
+                    } else if (!flatsArr['Rooms']) {
+                        proposalsRooms.innerText = ' комнаты';
                     } else {
-                        proposalsRooms.innerText = flatsArr['Rooms'];
+                        if (+flatsArr['Rooms']) {
+                            proposalsRooms.innerText = flatsArr['Rooms'] + ' комнаты';
+                        } else {
+                            proposalsRooms.innerText = flatsArr['Rooms'];
+                        }
                     }
                 }
+
 
                 if (flatsArr['Images'].length != 0 && flatsArr['Images']['Image'].length >= 8) {
                     var proposalsReccommend = document.createElement('span');
@@ -229,8 +228,8 @@
                 proposalsInfofirstfield.innerText = 'Этаж:';
                 proposalsInfosecondfield.innerText = 'Комнат';
                 proposalsInfothirdfield.innerText = 'Площадь';
-                proposalsInfofirstvalue.innerText = flatsArr['Floor'] + '/' + flatsArr['Floors'];
-                proposalsInfosecondvalue.innerText = flatsArr['Rooms'];
+                proposalsInfofirstvalue.innerText = (flatsArr['Floor'] ? flatsArr['Floor'] : ' - ') + '/' + flatsArr['Floors'];
+                proposalsInfosecondvalue.innerText = flatsArr['Rooms'] ? flatsArr['Rooms'] : ' - ';
                 proposalsInfothirdvalue.innerHTML = flatsArr['Square'] + 'm<sup>2</sup>';
 
                 proposalsInfofirstRow.appendChild(proposalsInfofirstfield);
@@ -300,7 +299,7 @@
             for (var i = startIndex; i < endIndex; i++) {
                 if (flatsArray[i]) {
                     viewFlats(flatsArray[i]);
-                    if (i ==  endIndex) {
+                    if (i ==  (endIndex - 1) && flatsArray.length <= endIndex) {
                         showMorebutton.style.display="none";
                     } else {
                         showMorebutton.style.display="inline-block";
@@ -319,6 +318,8 @@
                 showMoreStep += 12;
                 if (!window.location.href.split('page_id=7053').pop()) {
                     showMoreOption(globalFlats, showMoreStep, (showMoreStep + 12));
+                } else if (window.location.href.split('page_id=').pop() == '9') {
+                    showMoreOption(globalHouses, showMoreStep, (showMoreStep + 12));
                 } else {
                     showMoreOption(actualFlatsArray, showMoreStep, (showMoreStep + 12));
                 }
@@ -359,10 +360,11 @@
 
 
 // - ошибка когда элементов меньше 12 или нет вообще - исправлено
-// когда переходишь сразу по url определенной выборки, квартиры фильтруются только со второго раза
+// !!!! когда переходишь сразу по url определенной выборки, квартиры фильтруются только со второго раза
 // - ошибка селекта на других страницых, где его нет - исправлено
 // - скрыть кнопку показать еще когда квартир нет или массив показан полностью - исправлено
 // - показать блок .proposals__noitem когда нет отображаемых квартир по выбранным в фильре парамметрам - добавлено
 
-// нажатие на кнопку поиск, когда не выбрано количество комнат - выдавать сообщение "выберите, пожалуйста количество комнат"
+// - нажатие на кнопку поиск, когда не выбрано количество комнат - выдавать сообщение "выберите, пожалуйста количество комнат" - добавлено
 // подписи для страницы каждого района -
+// фильтр для категории "комнаты" - перебор массива с конца, пока не встретится категория "Квартиры", т.к. все комнаты расположены в конце массива после квартир

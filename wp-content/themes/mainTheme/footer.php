@@ -20,16 +20,15 @@
 				</div>
 				<div class="col-12 col-md-6 col-lg-5 footer-md">
 					<ul class="footer-menu">
-						<li><a href="">Кваритры</a></li>
-						<li><a href="">Комнаты</a></li>
-						<li><a href="">Дома и коттеджи</a></li>
-						<li><a href="">Коммерческая недвижимость</a></li>
+						<li><a href="<?php echo get_page_link( 7053 ); ?>">Кваритры</a></li>
+						<li><a href="<?php echo get_page_link( 7053 ); ?>">Комнаты</a></li>
+						<li><a href="<?php echo get_page_link( 9 ); ?>">Дома и коттеджи</a></li>
+<!-- 						<li><a href="">Коммерческая недвижимость</a></li> -->
 					</ul>
 					<ul class="footer-menu">
-						<li><a href="">О компании</a></li>
-						<li><a href="">Контакты</a></li>
-						<li><a href="">Услуги</a></li>
-						<li><a href="">Партнеры</a></li>
+						<li><a href="<?php echo get_page_link( 5 ); ?>">О компании</a></li>
+						<li><a href="<?php echo get_page_link( 15 ); ?>">Контакты</a></li>
+						<li><a href="<?php echo get_page_link( 11 ); ?>">Услуги</a></li>
 					</ul>
 					<p class="footer-copyright">© Агенство недвижимости - Фабрика Жилья.<br>
 					Все права защищены</p>
