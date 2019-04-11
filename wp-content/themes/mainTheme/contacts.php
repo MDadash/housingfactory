@@ -19,15 +19,15 @@ Template Name: contacts
         <div class="contacts__main">
             <div class="row">
                 <div class="col-md-4 contacts__main--one">
-                    <a href="tel: +89176480611" class="application__contact application__contact--phone">8 917-648-06-11</a><span class="phone-span">Звоните по всем вопросам</span>
+                    <a href="tel: +<?php echo get_option('my_phone'); ?>" class="application__contact application__contact--phone"><?php echo get_option('my_phone'); ?></a><span class="phone-span">Звоните по всем вопросам</span>
                 </div>
                 <div class="col-md-4 contacts__main--two">
-                    <a  href="tel: +89375316677" class="application__contact application__contact--phone">8 937-531-66-77</a>
+                    <a  href="tel: +<?php echo get_option('my_second_phone'); ?>" class="application__contact application__contact--phone"><?php echo get_option('my_second_phone'); ?></a>
                     <span class="contacts__request application__contact"><a href="javascript:void(0);" class="contacts__request-call" data-toggle="modal" data-target="#modal-callback">Заказать звонок</a></span>
                     
                 </div>
                 <div class="col-md-4 contacts__main--three">
-                    <a href="<?php echo get_page_link( 9 ); ?>" class="contacts__btn--request">
+                    <a href="<?php echo get_page_link(7112); ?>" class="contacts__btn--request">
                     <span class="contacts__btn-request--text">Подать заявку в банк</span>
                     <span class="contacts__btn-request--text">на ипотеку</span>
                 </a>
@@ -35,7 +35,7 @@ Template Name: contacts
         </div>
         <div class="row">
             <div class="col-md-4 contacts__main--four">
-                <a href="mailto:floesdesign@gmail.com" class="application__contact contacts__mail"> floesdesign@gmail.com</a> <span class="phone-span">Электронный адрес</span>
+                <a href="mailto:<?php echo get_option('email'); ?>" class="application__contact contacts__mail"><?php echo get_option('email'); ?></a> <span class="phone-span">Электронный адрес</span>
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4 contacts__main--five">
@@ -48,7 +48,7 @@ Template Name: contacts
             <div class="row">
                 <div class="col-lg-7 col-md-12">
                     <h6 class="application__contact application__contact--location">Мы находимся</h6>
-                    <p class="application__contact--text">Город Волгоград, Кировский район, улица 64-й Армии ул. 71 а , остановка Химтехникум. Мы находимся в трех этажном, офисном здании, на втором этаже. </p>
+                    <p class="application__contact--text"><?php echo get_option('address'); ?>, остановка Химтехникум. Мы находимся в трех этажном, офисном здании, на втором этаже.</p>
                 </div>
        
             </div>

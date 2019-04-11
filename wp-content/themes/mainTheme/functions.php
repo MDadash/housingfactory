@@ -25,6 +25,51 @@ function add_menu_atts( $atts, $item, $args ) {
 
 add_filter( 'nav_menu_link_attributes', 'add_menu_atts', 10, 3 );
 
+//Phonenumber
+function my_more_options(){
+    add_settings_field('phone','Телефон','display_phone','general');
+    register_setting('general','my_phone');
+}
+add_action('admin_init','my_more_options');
+function display_phone(){
+    echo "<input type='text' name='my_phone' value='".esc_attr(get_option('my_phone'))."'>";
+}
+//Second phonenumber
+function my_more_sp_options(){
+    add_settings_field('second_phone','Телефон #2','display_second_phone','general');
+    register_setting('general','my_second_phone');
+}
+add_action('admin_init','my_more_sp_options');
+function display_second_phone(){
+    echo "<input type='text' name='my_second_phone' value='".esc_attr(get_option('my_second_phone'))."'>";
+}
+//Email
+function my_email_options(){
+    add_settings_field('email','Email','display_email','general');
+    register_setting('general','email');
+}
+add_action('admin_init','my_email_options');
+function display_email(){
+    echo "<input type='text' name='email' value='".esc_attr(get_option('email'))."'>";
+}
+//Address
+function my_address_options(){
+    add_settings_field('address','Адрес','display_address','general');
+    register_setting('general','address');
+}
+add_action('admin_init','my_address_options');
+function display_address(){
+    echo "<input type='text' name='address' value='".esc_attr(get_option('address'))."'>";
+}
+//Address
+function my_address2_options(){
+    add_settings_field('address2','Адрес 2','display_address2','general');
+    register_setting('general','address2');
+}
+add_action('admin_init','my_address2_options');
+function display_address2(){
+    echo "<input type='text' name='address2' value='".esc_attr(get_option('address2'))."'>";
+}
 
 
 add_theme_support( 'post-thumbnails' );
@@ -35,19 +80,6 @@ function do_excerpt($string, $word_limit) {
   array_pop($words);
   echo implode(' ', $words).'';
 }
-
-/**вывод страниц отдельными постами **/
-        // add_filter('single_template', 'check_for_category_single_template');
-        // function check_for_category_single_template( $t ){
-        //     foreach( (array) get_the_category() as $cat ){
-        //         if ( file_exists(TEMPLATEPATH . "/single-category-{$cat->slug}.php") ) return TEMPLATEPATH . "/single-category-{$cat->slug}.php";
-        //         if($cat->parent){
-        //             $cat = get_the_category_by_ID( $cat->parent );
-        //             if ( file_exists(TEMPLATEPATH . "/single-category-{$cat->slug}.php") ) return TEMPLATEPATH . "/single-category-{$cat->slug}.php";
-        //         }
-        //     }
-        //     return $t;
-        // }
 
 remove_filter( 'the_content', 'wpautop' );
 

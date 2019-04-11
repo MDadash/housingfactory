@@ -24,6 +24,8 @@
 
         if (districtsSelect && window.location.href.split('page_id=').pop() !== '9') {
             if (!window.location.href.split('page_id=7053').pop() || !sessionStorage.getItem('globalFlats')) {
+                console.log(!window.location.href.split('page_id=7053').pop());
+                console.log(!sessionStorage.getItem('globalFlats'));
                 $.get( my_ajax.ajaxurl, data, function(response) {
                     sessionStorage.setItem('globalFlats', response);
                 });
@@ -32,7 +34,13 @@
                     getAndShowDistricts(globalFlats);
                     if(window.location.href.split('page_id=7053').pop()){
                         getUrlParameter ();
-                        showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
+                        // console.log(actualFlatsArray);
+                        // showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
+
+                        var activeRoomsOption = document.querySelector('.filter__option--active'),
+                            selectedDistrictValue = districtsSelect.value;
+                        var actFlats = getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
+                        showMoreOption (actFlats, showMoreStep, (showMoreStep + 12));
                     } else {
                         showMoreOption (globalFlats, showMoreStep, (showMoreStep + 12));
                     }
@@ -144,16 +152,21 @@
         function viewFlats (flatsArr) {
 
             // for (var i = 0; i < flatsArr.length; i++) {
-                var flatContainer = document.createElement('div');
-                flatContainer.className = 'proposals__item col-sm-6 col-lg-4';
+                var flatContainerWrap = document.createElement('div');
+                flatContainerWrap.className = 'col-sm-6 col-lg-4';
                 var dataDistrictAttr = flatsArr['District'];
-                flatContainer.setAttribute('data-district', dataDistrictAttr);
+                flatContainerWrap.setAttribute('data-district', dataDistrictAttr);
+
+                var flatContainer = document.createElement('div');
+                flatContainer.className = 'proposals__item';
+
+
                 var imgWrapper = document.createElement('div');
                 imgWrapper.className = 'proposals__img-wrapper';
                 var proposalsLink = document.createElement('a');
                 proposalsLink.innerText = 'Посмотреть';
                 proposalsLink.className = 'proposals__link';
-                proposalsLink.href = '/?page_id=7&flat_id=' + flatsArr['Id'];
+                proposalsLink.href = document.location.origin + '/?page_id=7&flat_id=' + flatsArr['Id'];
                 var proposalsImg = document.createElement('img');
                 proposalsImg.className = 'proposals__img';
                 proposalsImg.alt = flatsArr['Street'];
@@ -263,7 +276,9 @@
                 flatContainer.appendChild(infoWrapper);
                 flatContainer.appendChild(priceWrapper);
 
-                flatList.appendChild(flatContainer);
+                flatContainerWrap.appendChild(flatContainer);
+
+                flatList.appendChild(flatContainerWrap);
             // }
 
             // return document.querySelectorAll('.proposals__item');
@@ -366,5 +381,5 @@
 // - показать блок .proposals__noitem когда нет отображаемых квартир по выбранным в фильре парамметрам - добавлено
 
 // - нажатие на кнопку поиск, когда не выбрано количество комнат - выдавать сообщение "выберите, пожалуйста количество комнат" - добавлено
-// подписи для страницы каждого района -
+// - подписи для страницы каждого района - добавлено
 // фильтр для категории "комнаты" - перебор массива с конца, пока не встретится категория "Квартиры", т.к. все комнаты расположены в конце массива после квартир

@@ -34,16 +34,15 @@
 					</a>
 				</div>
 				<div class="col-12 col-sm-4 col-md-3 offset-sm-3 offset-md-0 mt-3 pl-3  text-center text-sm-left">
-					<a href="tel:89371234567" class="phonenumber link-phone">8(917)648-06-11</a>
+					<a href="tel:89371234567" class="phonenumber link-phone"><?php echo get_option('my_phone'); ?></a>
 					<p class="mt-2 p-color-grey d-none d-md-block">У нас есть покупатель на вашу квартиру</p>
 				</div>
 				<div class="col-12 col-sm-4 col-md-3 offset-sm-8 offset-md-0 mt-1 mt-sm-0 mt-md-3 text-center text-sm-left mt-negative-40">
-					<a href="tel:89371234567" class="phonenumber">8(937)531-66-77</a> <br>
+					<a href="tel:89371234567" class="phonenumber"><?php echo get_option('my_second_phone'); ?></a> <br>
 					<a href="javascript:void(0);" class="link-modal link-modal--call" data-toggle="modal" data-target="#modal-callback">Заказать звонок</a>
 				</div>
 				<div class="col-sm-3 mt-3 pl-0 d-none d-md-block">
-					<p class="p-color-grey">г.Волгоград<br>
-					улица 64-й Армии ул. 71 а</p>
+					<p class="p-color-grey"><?php echo get_option('address2'); ?></p>
 					<a href="<?php echo get_page_link( 15 ); ?>" class="link-modal link-modal--map">На карте</a>
 				</div>
 			</div>

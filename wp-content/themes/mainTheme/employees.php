@@ -33,7 +33,7 @@ Template Name: employees
           <?php } ?>
       </div>
       <aside class="col-12 col-md-4">
-        <a href="<?php echo get_page_link( 9 ); ?>" class="btn-request">
+        <a href="<?php echo get_page_link(7112); ?>" class="btn-request">
           <span class="btn-request__text">Подать заявку в банк</span>
           <br>
           <span class="btn-request__text">на ипотеку</span>

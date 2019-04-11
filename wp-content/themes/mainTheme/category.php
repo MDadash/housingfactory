@@ -51,11 +51,19 @@ Template Name: category
     <section class="category__additionaltext">
         <div class="container">
             <div class="row">
-                <h2 class="col-12 additionaltext__heading">Студии в Кировском районе</h2>
-                <p class="col-12">Когда вам необходимо продать, обменять или купить квартиру или дом, в этом вопросе вам
-                    необходимо найти для себя настоящего специалиста. Этим специалистом, дающим весь комплекс услуг
-                    является наше агентство недвижимости в Волгограде «Фабрика Жилья».</p>
+                <?php
+                $query = new WP_Query(array('category_name' => 'text-for-samples'));
+                while ($query->have_posts()) {
+                    $query->the_post();
+                    $field_name = $_GET['roomsquantity'] . '_' . $_GET['district'];
+                    $field = get_field_object($field_name);
+                    ?>
+                  <h2 class="col-12 additionaltext__heading"><?php echo $field['label']; ?></h2>
+                  <p class="col-12"><?php the_field($field_name) ?></p>
+                <?php } ?>
+
             </div>
+
         </div>
     </section>
 
@@ -64,7 +72,7 @@ Template Name: category
             <div class="proposals__wrapper col-sm-12">
                 <div class="row">
                     <h2 class="proposals__main-title proposals__main-title--new">Новые предложения</h2>
-                    <a href="<?php echo get_page_link(9); ?>" class="request request--morg"><span
+                    <a href="<?php echo get_page_link(7112); ?>" class="request request--morg"><span
                             class="request__text request__text--morg">Подать заявку в банк на ипотеку</span></a>
                     <button class="request request--sell" type="button" data-toggle="modal" data-target="#modal-sale">
                         <span class="request__text">Продать свою квартиру</span></button>
@@ -86,11 +94,11 @@ Template Name: category
         <section class="category__additionaltext">
             <div class="container">
                 <div class="row">
-                    <h2 class="col-12 additionaltext__heading">Мы помогаем вам приобрести мечту</h2>
-                    <p class="col-12">Наши риелторы, юристы, оценщики – проведут вас от самого начало пути, до
-                        заключения сделки. К нам обращаются собственники недвижимости, для быстрой и безопасной их
-                        реализации. Мы знаем в нашем регионе и мы всегда подстраиваемся под требования наших
-                        клиентов.</p>
+                    <?php $the_query = new WP_Query('p=7170'); ?>
+                    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                      <h2 class="col-12 additionaltext__heading"><?php the_title(); ?></h2>
+                      <p class="col-12"><?php the_content(); ?></p>
+                    <?php endwhile; ?>
                 </div>
             </div>
         </section>

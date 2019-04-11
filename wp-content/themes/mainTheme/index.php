@@ -27,7 +27,7 @@
                                                                 href="<?php echo get_page_link(11); ?>"><span
                             class="services__link-text">Услуги<br>риэлтора</span></a></li>
                 <li class="services__item col-md-3 col-lg-2"><a class="services__link services__link-m"
-                                                                href="<?php echo get_page_link(9); ?>"><span
+                                                                href="<?php echo get_page_link(7112); ?>"><span
                             class="services__link-text">Военная<br>ипотека</span></a></li>
                 <li class="services__item col-md-3 col-lg-2"><a class="services__link services__link-ca"
                                                                 href="<?php echo get_permalink(69); ?>"><span
@@ -41,7 +41,7 @@
             <div class="proposals__wrapper col-sm-12">
                 <div class="row">
                     <h2 class="proposals__main-title proposals__main-title--new">Новые предложения</h2>
-                    <a href="<?php echo get_page_link(9); ?>" class="request request--morg"><span
+                    <a href="<?php echo get_page_link(7112); ?>" class="request request--morg"><span
                             class="request__text request__text--morg">Подать заявку в банк на ипотеку</span></a>
                     <button class="request request--sell" type="button" data-toggle="modal"
                             data-target="#modal-sale"><span
