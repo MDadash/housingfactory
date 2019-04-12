@@ -74,7 +74,8 @@ header {
 }
 .navbar-dark .navbar-nav .menu-item:hover .nav-link,
 .navbar-dark .navbar-nav .menu-item:active .nav-link,
-.navbar-dark .navbar-nav .menu-item:focus .nav-link {
+.navbar-dark .navbar-nav .menu-item:focus .nav-link,
+.navbar-dark .navbar-nav .current_page_item .nav-link{
 	color: #36383a;
 	font-weight: 600;
 	padding-right: 0.45rem;
@@ -91,7 +92,8 @@ header {
 }
 .menu-item:hover,
 .menu-item:active,
-.menu-item:focus {
+.menu-item:focus,
+.current_page_item {
 	background: #ebf1f9;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;

@@ -88,8 +88,12 @@
                     showingFlatsByRoomsQuantity.push(flatsArray[j]);
                 } else {
                     var roomsNumber = flatsArray[j]['Rooms'];
-                    if (activeLink.getAttribute('data-rooms') == roomsNumber) {
+                    if (activeLink.getAttribute('data-rooms') == 4 && +roomsNumber >= activeLink.getAttribute('data-rooms')) {
+                            showingFlatsByRoomsQuantity.push(flatsArray[j]);
+                            console.log('4 and more rooms', activeLink.getAttribute('data-rooms'), roomsNumber);
+                    } else if (activeLink.getAttribute('data-rooms') == roomsNumber) {
                         showingFlatsByRoomsQuantity.push(flatsArray[j]);
+                        console.log('less than 4 rooms');
                     }
                 }
             }

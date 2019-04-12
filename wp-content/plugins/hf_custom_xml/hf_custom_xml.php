@@ -91,7 +91,7 @@ function getFlatForNextButtonByFlatId($flat_id) {
                 return $flat['Id'];
             }
         }
-        $secondArrayPartForSearch = array_splice($allFlats, $indexOfCurrentFlat);
+        $secondArrayPartForSearch = array_splice($allFlats, $indexOfCurrentFlat+1);
         foreach ($secondArrayPartForSearch as $flat) {
             if ($flat['Rooms'] === $roomsQuantity) {
                 return $flat['Id'];

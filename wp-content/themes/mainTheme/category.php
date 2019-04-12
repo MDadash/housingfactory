@@ -71,7 +71,7 @@ Template Name: category
         <section class="proposals container">
             <div class="proposals__wrapper col-sm-12">
                 <div class="row">
-                    <h2 class="proposals__main-title proposals__main-title--new">Новые предложения</h2>
+<!--                    <h2 class="proposals__main-title proposals__main-title--new">Новые предложения</h2>-->
                     <a href="<?php echo get_page_link(7112); ?>" class="request request--morg"><span
                             class="request__text request__text--morg">Подать заявку в банк на ипотеку</span></a>
                     <button class="request request--sell" type="button" data-toggle="modal" data-target="#modal-sale">
