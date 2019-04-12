@@ -79,6 +79,19 @@ add_action('wp_ajax_nopriv_gethouses', 'getHousesForAjax');
 add_action('wp_ajax_getimagesbyflat', 'getImagesByFlatId');
 add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
 
+//add_action('wp_ajax_getflatfornextbutton', 'getFlatForNextButtonByFlatId');
+//add_action('wp_ajax_nopriv_getflatfornextbutton', 'getFlatForNextButtonByFlatId');
+//
+//function getFlatForNextButtonByFlatIdForAjax($flat_id) {
+//    echo json_encode(getFlatForNextButtonByFlatId($flat_id));
+//    wp_die();
+//}
+//
+//function getFlatForNextButtonByFlatId($flat_id) {
+//    $currentFlat = getFlatById($flat_id);
+//
+//}
+
 function getFlatsForAjax() {
     echo json_encode(getOnlyFlats());
     wp_die();
