@@ -53,7 +53,7 @@ Template Name: item
                 <button class="appartment__btn appartment__btn--offer" type="button" data-toggle="modal" data-target="#modal-offer-price"><span class="appartment__btn-text">Предложить свою стоимость</span></button>
                 <div class="appartment__change-app-wrapper">
                     <a class="appartment__change-app" href="javascript:history.back();"><i class="fa fa-chevron-left"></i><span class="appartment__change-app-text">Назад</span></a>
-                    <a class="appartment__change-app" href=""><span class="appartment__change-app-text">Следующий объект</span><i class="fa fa-chevron-right"></i></a>
+                    <a class="appartment__change-app" href="<?php echo get_page_link(7) . '&flat_id=' . getFlatForNextButtonByFlatId($_GET['flat_id'])?>"><span class="appartment__change-app-text">Следующий объект</span><i class="fa fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
