@@ -24,8 +24,7 @@
 
         if (districtsSelect && window.location.href.split('page_id=').pop() !== '9') {
             if (!window.location.href.split('page_id=7053').pop() || !sessionStorage.getItem('globalFlats')) {
-                console.log(!window.location.href.split('page_id=7053').pop());
-                console.log(!sessionStorage.getItem('globalFlats'));
+
                 $.get( my_ajax.ajaxurl, data, function(response) {
                     sessionStorage.setItem('globalFlats', response);
                 });
@@ -34,9 +33,7 @@
                     getAndShowDistricts(globalFlats);
                     if(window.location.href.split('page_id=7053').pop()){
                         getUrlParameter ();
-                        // console.log(actualFlatsArray);
                         // showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
-
                         var activeRoomsOption = document.querySelector('.filter__option--active'),
                             selectedDistrictValue = districtsSelect.value;
                         var actFlats = getSortingArray (globalFlats, activeRoomsOption, selectedDistrictValue);
@@ -48,8 +45,6 @@
             } else {
                 globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
                 getAndShowDistricts(globalFlats);
-                console.log(actualFlatsArray);
-
                 getUrlParameter ();
                 // showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
 
@@ -66,7 +61,6 @@
         });
         $( document ).ajaxComplete(function() {
             globalHouses = JSON.parse(sessionStorage.getItem('globalHouses'));
-            console.log(globalHouses);
             showMoreOption (globalHouses, showMoreStep, (showMoreStep + 12));
 
         });
@@ -90,14 +84,11 @@
                     var roomsNumber = flatsArray[j]['Rooms'];
                     if (activeLink.getAttribute('data-rooms') == 4 && +roomsNumber >= activeLink.getAttribute('data-rooms')) {
                             showingFlatsByRoomsQuantity.push(flatsArray[j]);
-                            console.log('4 and more rooms', activeLink.getAttribute('data-rooms'), roomsNumber);
                     } else if (activeLink.getAttribute('data-rooms') == roomsNumber) {
                         showingFlatsByRoomsQuantity.push(flatsArray[j]);
-                        console.log('less than 4 rooms');
                     }
                 }
             }
-            console.log(showingFlatsByRoomsQuantity, 'rommssorting');
 
             actualFlatsArray = [];
             for (var i = 0; i < showingFlatsByRoomsQuantity.length; i++) {
@@ -132,7 +123,6 @@
                         districtsArray.push(currentDistrict);
                     }
                 }
-                console.log(districtsArray, JSON.stringify(districtsArray));
 
                 if (!sessionStorage.getItem('districts')) {
                     var districtsString = JSON.stringify(districtsArray);
@@ -292,7 +282,6 @@
             var urlPartsArray = window.location.href.split('&');
             var roomsParametr = urlPartsArray[1].split('roomsquantity=').pop();
             var districtParametr = urlPartsArray[2].split('district=').pop();
-            console.log(roomsParametr, districtParametr);
             for (var i = 0; i < roomsLinks.length; i++) {
                 if (roomsLinks[i].getAttribute('data-rooms') == roomsParametr) {
                     roomsLinks[i].classList.add('filter__option--active');
@@ -301,14 +290,12 @@
                 $('#select-district').niceSelect('destroy');
                 $("#select-district").niceSelect();
 
-                console.log('get it');
-
             }
         }
 
 //  show next 12 elements
         function showMoreOption (flatsArray, startIndex, endIndex) {
-            console.log(flatsArray);
+
             if (flatsArray.length) {
                 document.querySelector('.proposals__noitem').style.display = 'none';
             } else {
@@ -376,14 +363,4 @@
     });
 }());
 
-
-
-// - ошибка когда элементов меньше 12 или нет вообще - исправлено
-// !!!! когда переходишь сразу по url определенной выборки, квартиры фильтруются только со второго раза
-// - ошибка селекта на других страницых, где его нет - исправлено
-// - скрыть кнопку показать еще когда квартир нет или массив показан полностью - исправлено
-// - показать блок .proposals__noitem когда нет отображаемых квартир по выбранным в фильре парамметрам - добавлено
-
-// - нажатие на кнопку поиск, когда не выбрано количество комнат - выдавать сообщение "выберите, пожалуйста количество комнат" - добавлено
-// - подписи для страницы каждого района - добавлено
 // фильтр для категории "комнаты" - перебор массива с конца, пока не встретится категория "Квартиры", т.к. все комнаты расположены в конце массива после квартир
