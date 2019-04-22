@@ -17,9 +17,6 @@ Template Name: application
             </div>
         </div>
         <div class="application__main">
-            <div>
-                <embed height="0" src="<?php bloginfo('template_url') ?>/images/123.mp3">
-            </div>
             <h3 class="application__main--head">Хотите взять ипотеку или узнать какую Вам сумму одобрит банк? </h3>
             <div class="row">
                 <div class="col-md-6 application__main--one">
@@ -52,16 +49,11 @@ Template Name: application
             <h6 class="application__contact application__contact--call">Мы можем перезвонить сами</h6>
         </div>
        <div class="service-form clearfix">
-           <?php echo do_shortcode('[contact-form-7 id="42" title="Contact form 1"]'); ?> 
+           <?php echo do_shortcode('[contact-form-7 id="43" title="Contact form 2"]'); ?> 
         </div>
         <div class="application__map">
             <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A36329de59be7854ce8be36767a9332a8a2289974a709541966d21f0cb4958656&amp;width=100%25&amp;height=400&amp;lang=uk_UA&amp;scroll=true"></script>
         </div>
-
-        
-
-
-                 
     </section>    
 </main>
 

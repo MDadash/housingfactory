@@ -118,7 +118,8 @@ header {
 	}
 }
 @media screen and (max-width: 767px) {
-	.menu-item:hover {
+	.menu-item:hover,
+	.current_page_item{
 		border-radius: 5px;
 	}
 	.navbar-dark .navbar-nav .nav-link {
@@ -647,4 +648,56 @@ footer img {
   font-weight: bold;
   text-align: center;
   margin: 20px;
+}
+
+/* wp-forms messages position */
+.wpcf7-form,
+.wpcf7-form-control-wrap {
+	position: relative;
+}
+span.wpcf7-not-valid-tip,
+div.wpcf7-response-output {
+	position: absolute;
+}
+div.wpcf7-validation-errors.wpcf7-response-output,
+div.wpcf7-mail-sent-ng {
+	color: red;
+	font-weight: 400;
+}
+div.wpcf7-response-output.wpcf7-mail-sent-ok {
+	color: green;
+}
+div.wpcf7-response-output {
+	margin: 0 auto;
+	width: 100%;
+	border: none;
+	text-align: center;
+	bottom: -25px;
+}
+.wpcf7-form .form-group .wpcf7-form-control-wrap {
+	display: block;
+}
+
+.wpcf7-form .form-group span.wpcf7-not-valid-tip {
+	width: 100%;
+	font-size: 12px;
+	text-align: center;
+}
+.wpcf7-form .form-group .wpcf7-form-control-wrap.text-772 span.wpcf7-not-valid-tip,
+.wpcf7-form .form-group .wpcf7-form-control-wrap.tel span.wpcf7-not-valid-tip {
+	width: auto;
+	left: -41px;
+	right: 0;
+}
+
+@media screen and (max-width: 991px) {
+	div.wpcf7-response-output,
+	span.wpcf7-not-valid-tip {
+		font-size: 12px;
+	}
+}
+@media screen and (max-width: 575px) {
+	.input-group--tel > p {
+		width: 80%;
+	}
 }
