@@ -24,7 +24,6 @@
   <meta name="author" content="">
 </head>
 <body>
-
 	<header>
 		<div class="container header-info">
 			<div class="row">
@@ -47,13 +46,14 @@
 				</div>
 			</div>
 		</div>
-
-	
 		<nav class="navbar navbar-expand-md navbar-dark navbar--header pb-md-0">
 			<div class="container header-menu-container">
 <!-- 				<a class="navbar-brand d-md-none" href="#">Navigation</a> -->
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				   <span class="icon-bar top-bar"></span>
+				   <span class="icon-bar middle-bar"></span>
+				   <span class="icon-bar bottom-bar"></span>
+
 				</button>
 				<?php wp_nav_menu( array(
 					'menu'            => 'navbar', 
@@ -65,8 +65,7 @@
 			</div>
 		</nav>
 	</header>
-  <?php echo do_shortcode('[contact-form-7 id="7106" title="callback"]'); ?>    
-<!-- 	<div class="modal" id="modal-callback">
+	<div class="modal" id="modal-callback">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -74,25 +73,22 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                <form class="modal-sell__form" method="post" action="">
-                      <div class="form-group">
-                        <label for="name">Ваше имя:</label> 
-                        <input class="form-control"  id="name" name="name" type="text" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="text">Номер телефона</label> 
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text">+7</div>
-                          </div> 
-                          <input class="form-control"  id="text" name="tel" type="text"required>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <button class="btn" name="submit" type="submit">Отправить</button>
-                      </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-</div> -->
+  					<?php echo do_shortcode('[contact-form-7 id="7106" title="callback"]'); ?>
+           		</div>
+       	 	</div>
+   		</div>
+	</div>
+	<div class="modal modal-sell" id="modal-sale">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h2 class="modal-title">Продать квартиру</h2>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                <?php echo do_shortcode('[contact-form-7 id="7107" title="sell"]'); ?>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+              

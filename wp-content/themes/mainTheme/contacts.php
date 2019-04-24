@@ -8,11 +8,11 @@ Template Name: contacts
 <main>
  <section class="container container--contacts">
         <div class="row application__top">
-            <div class="col-md-9 col-lg-10 col-sm-12">
+            <div class="col-md-9 col-lg-10 col-sm-8">
                 <h2>Контакты</h2>
                 <p class="contacts__top--text">Мы очень рады, что вы проявили интерес</p>
             </div>
-            <div class="col-md-3 col-lg-2 col-sm-12 application__btn--box">
+            <div class="col-md-3 col-lg-2 col-sm-4 application__btn--box">
                 <a href="javascript:history.back();" class="application__btn"><span>Назад</span></a>
             </div>
         </div>
@@ -62,36 +62,6 @@ Template Name: contacts
     </section>    
 </main>
 
-<!-- <div class="modal" id="modal-callback">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Заказать звонок</h2>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-            <form class="modal-sell__form" method="post" action="">
-                  <div class="form-group">
-                    <label for="name">Ваше имя:</label> 
-                    <input class="form-control"  id="name" name="name" type="text" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="text">Номер телефона</label> 
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">+7</div>
-                      </div> 
-                      <input class="form-control"  id="text" name="tel" type="text"required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn" name="submit" type="submit">Отправить</button>
-                  </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
- -->
+
 
 <?php get_footer() ?>

@@ -6,7 +6,12 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form>
+                <?php echo do_shortcode('[contact-form-7 id="7107" title="sell"]'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+             <!--    <form>
                     <div class="form-group">
                         <label for="name">Ваше имя:</label>
                         <input class="form-control"  id="name" name="name" type="text" required>
@@ -46,8 +51,4 @@
                     <div class="form-group">
                         <button class="btn" name="submit" type="submit">Отправить</button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                </form> -->
