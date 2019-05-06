@@ -41,6 +41,9 @@ function getNearestFlats($flat_id) {
         if ($val['District'] === $flatDistrict && $val['Rooms'] === $flatRooms && $val['Floors'] === $flatFloors && $val['Id'] != $flatId) {
             array_push($nearestFlats, $val);
         }
+        if (count($nearestFlats) === 9) {
+            return $nearestFlats;
+        }
     }
 
     return $nearestFlats;

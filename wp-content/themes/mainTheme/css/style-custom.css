@@ -61,9 +61,10 @@ header {
 }
 
 .navbar--header {
-	background: #7c4672; /* Old browsers */
-	background: -moz-linear-gradient(left, #7c4672 0%, #dc707d 100%); /* FF3.6-15 */
+	background: #7c4672; /* Old browsers */ /* FF3.6-15 */
 	background: -webkit-linear-gradient(left, #7c4672 0%,#dc707d 100%); /* Chrome10-25,Safari5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#7c4672),to(#dc707d));
+	background: -o-linear-gradient(left, #7c4672 0%,#dc707d 100%);
 	background: linear-gradient(to right, #7c4672 0%,#dc707d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c4672', endColorstr='#dc707d',GradientType=1 ); /* IE6-9 */
 }
@@ -84,7 +85,8 @@ header {
 
 .navbar-nav {
 	width: 100%;
-	justify-content: space-around;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
 }
 .navbar {
 	/*	padding-bottom: 0;*/
@@ -143,6 +145,7 @@ footer img {
 
 .footer-menu {
 	display: inline-block;
+	vertical-align: text-top;
 }
 .footer-menu:first-child {
 	margin-right: 55px;
@@ -206,12 +209,18 @@ footer img {
 		padding: 12px 5px 12px 25px;
 	}
 	.footer-md {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
 	}
 	.footer-copyright {
-		align-self: flex-start;
+		-ms-flex-item-align: start;
+		    align-self: flex-start;
 	}
 }
 
@@ -299,7 +308,7 @@ footer img {
 	padding: 25px 0;
 }
 .article__heading {
-	font-size: 20px;
+	font-size: 29px;
 	color: #292a2c;
 	text-transform: uppercase;
 }
@@ -407,7 +416,9 @@ footer img {
 .service-form--border {
 	padding-top: 20px;
 	border: 3px solid transparent;
-	border-image: url(../images/brdr1.png) 3 0 0 0 repeat;
+	-webkit-border-image: url(../images/brdr1.png) 3 0 0 0 repeat;
+	     -o-border-image: url(../images/brdr1.png) 3 0 0 0 repeat;
+	        border-image: url(../images/brdr1.png) 3 0 0 0 repeat;
 }
 
 
@@ -507,6 +518,14 @@ footer img {
     top: 10px;*/
 
 }
+/* _______________ THE SERVICE page ____________________ */
+.article__image {
+	text-align: center;
+}
+.article__image img {
+	width: auto;
+	height: 100px;
+}
 
 /* _______________ ABOUT US page ____________________ */
 .wpsisac-slick-carousal.design-6 .slick-image-slide {
@@ -514,7 +533,8 @@ footer img {
 	height: auto !important;
 }
 .slick-image-slide-wrap img {
-	object-fit: contain;
+	-o-object-fit: contain;
+	   object-fit: contain;
 }
 .about_content p {
 	font-size: 16px;

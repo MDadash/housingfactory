@@ -13,7 +13,7 @@ Template Name: services
               <div class="row">
                   <?php $the_query = new WP_Query('p=7058'); ?>
                   <?php while  ($the_query->have_posts() ) : $the_query->the_post(); ?>
-                    <h2 class="col-12 additionaltext__heading"><?php the_title(); ?></h2>
+                    <h1 class="col-12 additionaltext__heading"><?php the_title(); ?></h1>
                     <div class="col-12"><?php the_content(); ?></div>
                   <?php endwhile; ?>
               </div>

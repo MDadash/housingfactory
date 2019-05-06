@@ -13,7 +13,7 @@ Template Post Type: post
             <div class="col-12 col-md-8 ">
 
                 <article class="article article--single clearfix mt-0 mb-0">
-                    <h3 class="article__heading"><?php the_title(); ?></h3>
+                <h1 clas  s="article__heading"><?php the_title(); ?></h1>
                     <p class="article__date mb-3"><?php the_time("d M Y"); ?></p>
                   <div class="col-md-6 pl-0 pr-0 pr-md-3 float-left">
                       <?php the_post_thumbnail(); ?>
@@ -71,7 +71,18 @@ Template Post Type: post
                 <button class="request request--sell request--wider" type="button" data-toggle="modal" data-target="#modal-sale">
                     <span class="request__text">Продать свою квартиру</span>
                 </button>
-                <img src="<?php bloginfo('template_url') ?>/images/articles-banner.png" alt="" class="banner">
+<!--                 <img src="<?php bloginfo('template_url') ?>/images/articles-banner.png" alt="" class="banner"> -->
+                <ul class="assistance__list assistance__list--lawyer">
+                    <?php 
+                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6 ) );
+                            while ( $query->have_posts() ) { $query->the_post(); ?>  
+                                <li class="assistance__item">
+                                    <a class="assistance__link assistance__link--rra" href="<?php echo get_permalink(); ?>">
+                                        <?php the_post_thumbnail(); ?>
+                                        <span><?php the_title(); ?></span></a>
+                                </li>
+                    <?php } ?>
+                </ul>
             </aside>
         </div>           
     </section>    

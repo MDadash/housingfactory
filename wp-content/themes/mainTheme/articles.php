@@ -39,9 +39,18 @@ Template Name: articles
                 <button class="request request--sell request--wider" type="button" data-toggle="modal" data-target="#modal-sale">
                     <span class="request__text">Продать свою квартиру</span>
                 </button>
-                <img src="<?php bloginfo('template_url') ?>/images/articles-banner.png" alt="" class="banner">
-            </aside>
-        </div>           
+                <ul class="assistance__list assistance__list--lawyer">
+                    <?php 
+                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6 ) );
+                            while ( $query->have_posts() ) { $query->the_post(); ?>  
+                                <li class="assistance__item">
+                                    <a class="assistance__link assistance__link--rra" href="<?php echo get_permalink(); ?>">
+                                        <?php the_post_thumbnail(); ?>
+                                        <span><?php the_title(); ?></span></a>
+                                </li>
+                    <?php } ?>
+                </ul>
+       </div>           
     </section>    
 </main>
 

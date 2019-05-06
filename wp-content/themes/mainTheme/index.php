@@ -51,10 +51,9 @@
             <div class="proposals__item-list row">
                 <?php foreach (getLasTwelveFlats() as $flat) : ?>
                     <div class="col-sm-6 col-lg-4">
-                        <div class="proposals__item">
+                        <a class="proposals__item" href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">
                             <div class="proposals__img-wrapper">
-                                <a class="proposals__link"
-                                   href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">Посмотреть</a>
+                                <span class="proposals__link">Посмотреть</span>
                                 <?php if (!is_array($flat['Images']['Image'])) : ?>
                                     <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
                                          alt="<?php echo $flat->Street; ?>">
@@ -99,7 +98,7 @@
                                 <!--                        <span class="proposals__price-last">6 500 000 &#8381;</span>-->
                                 <span class="proposals__price-new"><?php echo $flat['Price']; ?> &#8381;</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -122,7 +121,7 @@
                 </li>
                 <li class="advantages__item advantages__item-lh col-sm-6 col-md-4 col-lg-3">
                     <h3 class="advantages__title">Юридическое сопровождение</h3>
-                    <p class="advantages__descr">Мы сопрваждаем сделку от поиска до покупки</p>
+                    <p class="advantages__descr">Мы сопровождаем сделку от поиска до покупки</p>
                 </li>
                 <li class="advantages__item advantages__item-lc col-sm-6 col-md-4 col-lg-3">
                     <h3 class="advantages__title">Низкая<br> комиссия</h3>
