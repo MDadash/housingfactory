@@ -51,52 +51,49 @@
             <div class="proposals__item-list row">
                 <?php foreach (getLasTwelveFlats() as $flat) : ?>
                     <div class="col-sm-6 col-lg-4">
-                        <a class="proposals__item" href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">
+                        <a class="proposals__item" href="<?php echo get_page_link(7) . '&flat_id=' . $flat['@attributes']['internal-id']; ?>">
                             <div class="proposals__img-wrapper">
                                 <span class="proposals__link">Посмотреть</span>
-                                <?php if (!is_array($flat['Images']['Image'])) : ?>
+                                <?php if (!is_array($flat['image'])) : ?>
                                     <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
-                                         alt="<?php echo $flat->Street; ?>">
-                                    <!--                                <span class="proposals__sale">Скидки</span>-->
-                                    <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
+                                         alt="<?php echo $flat['location']['address']; ?>">
+                                    <?php if ($flat['mortgage']) : ?>
                                         <span class="proposals__mortgage">Ипотека</span>
                                     <?php endif ?>
-                                    <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
+                                    <span class="proposals__rooms"><?php echo $flat['rooms']; ?> комнаты</span>
                                 <?php else : ?>
                                     <img class="proposals__img"
-                                         src="<?php echo $flat['Images']['Image'][0]['@attributes']['url']; ?>"
-                                         alt="<?php echo $flat->Street; ?>">
-                                    <!--                                <span class="proposals__sale">Скидки</span>-->
-                                    <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
+                                         src="<?php echo $flat['image'][0]; ?>"
+                                         alt="<?php echo $flat['location']['address']; ?>">
+                                    <?php if ($flat['mortgage']) : ?>
                                         <span class="proposals__mortgage">Ипотека</span>
                                     <?php endif ?>
-                                    <span class="proposals__rooms"><?php echo $flat['Rooms']; ?> комнаты</span>
-                                    <?php if (count($flat['Images']['Image']) >= 8) : ?>
+                                    <span class="proposals__rooms"><?php echo $flat['rooms']; ?> комнаты</span>
+                                    <?php if (count($flat['image']) >= 8) : ?>
                                         <span class="proposals__reccommend"></span>
                                     <?php endif ?>
                                 <?php endif; ?>
                             </div>
                             <div class="proposals__info-wrapper">
-                                <h3 class="proposals__title"><?php echo $flat['Street']; ?></h3>
+                                <h3 class="proposals__title"><?php echo $flat['location']['address']; ?></h3>
                                 <table class="proposals__info">
                                     <tr>
                                         <td class="proposals__field">Этаж:</td>
-                                        <td class="proposals__value"><?php echo $flat['Floor']; ?>
-                                            /<?php echo $flat['Floors']; ?></td>
+                                        <td class="proposals__value"><?php echo $flat['floor']; ?>
+                                            /<?php echo $flat['floors-total']; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="proposals__field">Комнат</td>
-                                        <td class="proposals__value"><?php echo $flat['Rooms']; ?></td>
+                                        <td class="proposals__value"><?php echo $flat['rooms']; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="proposals__field">Площадь</td>
-                                        <td class="proposals__value"><?php echo $flat['Square']; ?>m<sup>2</sup></td>
+                                        <td class="proposals__value"><?php echo $flat['area']['value']; ?>m<sup>2</sup></td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="proposals__price-wrapper">
-                                <!--                        <span class="proposals__price-last">6 500 000 &#8381;</span>-->
-                                <span class="proposals__price-new"><?php echo $flat['Price']; ?> &#8381;</span>
+                                <span class="proposals__price-new"><?php echo $flat['price']['value']; ?> &#8381;</span>
                             </div>
                         </a>
                     </div>
