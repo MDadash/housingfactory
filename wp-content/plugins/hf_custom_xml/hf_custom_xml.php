@@ -12,19 +12,23 @@ define('XML_FILE_DIR', plugin_dir_path(__FILE__));
 
 function writeNewFlatsToFile(): void {
     $fd = fopen(XML_FILE_DIR . 'all_flats.xml', 'w');
-    $str = simplexml_load_file('https://export.lotinfo.ru/c8be8a2c3b0cdb73df3c599ebc0d3540', null, LIBXML_NOCDATA);
+    $str = simplexml_load_file('http://topnlab.ru/export/main/database/?data=objects&format=yandex&key=WlqHFLrMa6uYi5Wa4XY=', null, LIBXML_NOCDATA);
     fwrite($fd, json_encode($str));
     fclose($fd);
 }
 
 function getAllXml() {
     $str = file_get_contents(XML_FILE_DIR . 'all_flats.xml');
-    return json_decode($str, true)['Ad'];
+    return json_decode($str, true)['offer'];
 
 }
 
 function getFlatById($flat_id) {
-    $flat = getAllXml()[array_search($flat_id, array_column(getAllXml(), 'Id'))];
+    foreach (getAllXml() as $flat) {
+        if ($flat['@attributes']['internal-id'] === $flat_id) {
+            return $flat;
+        }
+    }
     return $flat;
 }
 
@@ -32,13 +36,12 @@ function getNearestFlats($flat_id) {
     $nearestFlats = [];
     $allFlats = getAllXml();
     $flat = getFlatById($flat_id);
-    $flatDistrict = $flat['District'];
-    $flatRooms = $flat['Rooms'];
-    $flatFloors = $flat['Floors'];
-    $flatId = $flat['Id'];
+    $flatDistrict = $flat['location']['sub-locality-name'];
+    $flatRooms = $flat['rooms'];
+    $flatFloors = $flat['floors-total'];
 
     foreach ($allFlats as $key => $val) {
-        if ($val['District'] === $flatDistrict && $val['Rooms'] === $flatRooms && $val['Floors'] === $flatFloors && $val['Id'] != $flatId) {
+        if ($val['location']['sub-locality-name'] === $flatDistrict && $val['rooms'] === $flatRooms && $val['floors-total'] === $flatFloors && $val['@attributes']['internal-id'] != $flat_id) {
             array_push($nearestFlats, $val);
         }
         if (count($nearestFlats) === 9) {
@@ -52,11 +55,11 @@ function getNearestFlats($flat_id) {
 function getOnlyFlats() {
     $onlyFlats = [];
     $xmlArray = getAllXml();
-    $keysF = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Квартиры');
+    $keysF = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'category-id')),'1');
     foreach ($keysF as $key) {
         array_push($onlyFlats, $xmlArray[$key]);
     }
-    $keysR = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Комнаты');
+    $keysR = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'category-id')),'2');
     foreach ($keysR as $key) {
         array_push($onlyFlats, $xmlArray[$key]);
     }
@@ -66,7 +69,7 @@ function getOnlyFlats() {
 function getOnlyHouses() {
     $onlyHouses = [];
     $xmlArray = getAllXml();
-    $keysH = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'Category')),'Дома, дачи, коттеджи');
+    $keysH = array_keys(array_combine(array_keys($xmlArray), array_column($xmlArray, 'category-id')),'3');
     foreach ($keysH as $key) {
         array_push($onlyHouses, $xmlArray[$key]);
     }
@@ -84,26 +87,26 @@ add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
 
 function getFlatForNextButtonByFlatId($flat_id) {
     $currentFlat = getFlatById($flat_id);
-    $roomsQuantity = $currentFlat['Rooms'];
+    $roomsQuantity = $currentFlat['rooms'];
     $allFlats = getAllXml();
     $indexOfCurrentFlat = array_search($currentFlat, $allFlats);
     if (array_key_exists($indexOfCurrentFlat+1, $allFlats)) {
         $firstArrayPartForSearch = array_slice($allFlats, ($indexOfCurrentFlat+1));
         foreach ($firstArrayPartForSearch as $flat) {
-            if ($flat['Rooms'] === $roomsQuantity) {
-                return $flat['Id'];
+            if ($flat['rooms'] === $roomsQuantity) {
+                return $flat['@attributes']['internal-id'];
             }
         }
         $secondArrayPartForSearch = array_splice($allFlats, $indexOfCurrentFlat+1);
         foreach ($secondArrayPartForSearch as $flat) {
-            if ($flat['Rooms'] === $roomsQuantity) {
-                return $flat['Id'];
+            if ($flat['rooms'] === $roomsQuantity) {
+                return $flat['@attributes']['internal-id'];
             }
         }
     }
     foreach ($allFlats as $flat) {
-        if ($flat['Rooms'] === $roomsQuantity) {
-            return $flat['Id'];
+        if ($flat['rooms'] === $roomsQuantity) {
+            return $flat['@attributes']['internal-id'];
         }
     }
     return $flat_id;
@@ -121,49 +124,11 @@ function getHousesForAjax() {
 
 function getImagesByFlatId() {
     $flat_id = $_GET['flat_id'];
-    $imagesByFlatId = [];
-    foreach (getFlatById($flat_id)['Images']['Image'] as $img) {
-        array_push($imagesByFlatId, $img['@attributes']['url']);
-    }
+    $imagesByFlatId = getFlatById($flat_id)['image'];
     echo json_encode($imagesByFlatId);
     wp_die();
 }
 
-//function setNewFlats(): void {
-//    $file1 = XML_FILE_DIR . 'hfxml.xml';
-//    $xml1 = simplexml_load_file($file1, null, LIBXML_NOCDATA);
-//    $xmlJson1 = json_encode($xml1);
-//    $xmlArray1 = json_decode($xmlJson1,true)['Ad'];
-//
-//    $file2 = XML_FILE_DIR . 'hfxml2.xml';
-//    $xml2 = simplexml_load_file($file2, null, LIBXML_NOCDATA);
-//    $xmlJson2 = json_encode($xml2);
-//    $xmlArray2 = json_decode($xmlJson2,true)['Ad'];
-//
-//    foreach ($xmlArray1 as $val1) {
-//        foreach ($xmlArray2 as $key2 => $val2) {
-//            if ($val1['Id'] === $val2['Id']) {
-//                unset($xmlArray2[$key2]);
-//            }
-//        }
-//    }
-//
-//    if ($xmlArray2) {
-//        writeNewFlatsToFile($xmlArray2);
-//    }
-//}
-//
-//function writeNewFlatsToFile($data): void {
-//    $fd = fopen(XML_FILE_DIR . 'new_flats.txt', 'w');
-//    $str = json_encode($data);
-//    fwrite($fd, $str);
-//    fclose($fd);
-//}
-//
-//function getNewFlats() {
-//    $str = file_get_contents(XML_FILE_DIR . 'new_flats.txt');
-//    return json_decode($str, true);
-//}
 
 function getLasTwelveFlats() {
     $result = array_slice(getAllXml(), -12, 12);
