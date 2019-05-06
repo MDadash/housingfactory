@@ -70,7 +70,7 @@
         function setPageUrl (districtOption, roomsLink) {
             districtIndex = districtOption;
             roomsQuantity = roomsLink.getAttribute('data-rooms');
-            window.location.href = '/?page_id=7053&roomsquantity=' + roomsQuantity + '&district=' + districtIndex;
+            window.location.href = '/demo/housingfactory/?page_id=7053&roomsquantity=' + roomsQuantity + '&district=' + districtIndex;
         }
 
 //  sorting all flats after getting data from ajax
@@ -151,8 +151,9 @@
                 var dataDistrictAttr = flatsArr['District'];
                 flatContainerWrap.setAttribute('data-district', dataDistrictAttr);
 
-                var flatContainer = document.createElement('div');
+                var flatContainer = document.createElement('a');
                 flatContainer.className = 'proposals__item';
+                flatContainer.href = document.location.origin + '/demo/housingfactory/?page_id=7&flat_id=' + flatsArr['Id'];
 
 
                 var imgWrapper = document.createElement('div');
@@ -160,7 +161,6 @@
                 var proposalsLink = document.createElement('a');
                 proposalsLink.innerText = 'Посмотреть';
                 proposalsLink.className = 'proposals__link';
-                proposalsLink.href = document.location.origin + '/?page_id=7&flat_id=' + flatsArr['Id'];
                 var proposalsImg = document.createElement('img');
                 proposalsImg.className = 'proposals__img';
                 proposalsImg.alt = flatsArr['Street'];

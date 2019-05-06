@@ -43,7 +43,7 @@ Template Name: application
                     <p class="application__contact--text">Город Волгоград, Кировский район, улица 64-й Армии ул. 71 а, остановка Химтехникум. Мы находимся в трех этажном, офисном здании, на втором этаже. </p>
                 </div>
                 <div class="col-md-4">
-                    <a href="tel: +89176480611" class="application__contact application__contact--phone">8 917-648-06-11</a> <span class="phone-span">Звоните по всем вопросам</span>
+                    <a href="tel:8937-731-1515" class="application__contact application__contact--phone">8937-731-1515</a> <span class="phone-span">Звоните по всем вопросам</span>
                 </div>
             </div>
             <h6 class="application__contact application__contact--call">Мы можем перезвонить сами</h6>

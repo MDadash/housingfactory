@@ -13,7 +13,7 @@ Template Post Type: post
             <div class="col-12 col-md-8 ">
 
                 <article class="article article--single clearfix mt-0 mb-0">
-                    <h3 class="article__heading"><?php the_title(); ?></h3>
+                    <h1 class="article__heading"><?php the_title(); ?></h1>
 <!--                   <div class="col-md-6 pl-0 pr-0 pr-md-3 float-left">
                       <?php the_post_thumbnail(); ?>
                   </div> -->
@@ -41,19 +41,19 @@ Template Post Type: post
 
                 <div class="row mt-3">
                   <h2 class="col-12">Рекомендуем почитать</h2>
-                  <p class="col-12 txt-grey mt-3">Интересные похожие статьи</p> 
+                  <p class="col-12 txt-grey mt-3">Похожие услуги</p> 
                 </div>
 
                 <?php 
-                    $query = new WP_Query( array( 'category_name' => 'articles', 'posts_per_page' => 2, ) );
+                    $query = new WP_Query( array( 'category_name' => 'realtor-services', 'posts_per_page' => 2, ) );
                         while ( $query->have_posts() ) { $query->the_post(); ?>
                             <article class="article row mt-0 mb-0">
-                                <div class="col-12 col-lg-4">
+                                <div class="col-12 col-lg-2 article__image">
                                     <?php the_post_thumbnail(); ?>
                                 </div>
                                 <div class="col-12 col-lg-8 mt-3 mt-lg-0">
                                     <h3 class="article__heading"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></h3>
-                                    <p class="article__date"><?php the_time("d M Y"); ?></p>
+                                    <!-- <p class="article__date"><?php the_time("d M Y"); ?></p> -->
                                     <div class="article__content"> <?php do_excerpt(get_the_excerpt(), 40); ?> </div>
                                 </div>                    
                             </article>
@@ -70,7 +70,20 @@ Template Post Type: post
                 <button class="request request--sell request--wider" type="button" data-toggle="modal" data-target="#modal-sale">
                     <span class="request__text">Продать свою квартиру</span>
                 </button>
-                <img src="<?php bloginfo('template_url') ?>/images/articles-banner.png" alt="" class="banner">
+                    <?php
+                      $query = new WP_Query( array( 'category_name' => 'employees', 'posts_per_page' => 4 ) );
+                      while ( $query->have_posts() ) { $query->the_post(); ?>
+                        <article class="article row mt-0 mb-0">
+                          <div class="col-12 col-lg-4">
+                              <?php the_post_thumbnail(); ?>
+                          </div>
+                          <div class="col-12 col-lg-8 mt-3 mt-lg-0">
+                            <h3 class="article__heading"><?php the_title(); ?></h3>
+            <!--                <p class="article__date">--><?php //the_time("d M Y"); ?><!--</p>-->
+                            <div class="article__content"> <?php do_excerpt(get_the_excerpt(), 40); ?> </div>
+                          </div>
+                        </article>
+                    <?php } ?>
             </aside>
         </div>           
     </section>    

@@ -1,11 +1,9 @@
 <?php
-/*
-Template Name: item
-*/
+
 ?>
 <?php get_header() ?>
 
-<main>
+<main> 
 
     <section class="appartment container">
         <div class="row">
@@ -16,19 +14,15 @@ Template Name: item
                 </div>
                 <div>
                     <h2 class="appartment__title">Описание квартиры</h2>
-   <!--                  <?php foreach (getFlatById($_GET['flat_id'])['Images']['Image'] as $img) : ?>
-                        <img src="<?php echo $img['@attributes']['url']?>">
-                    <?php endforeach;?> -->
                     <p class="appartment__description"><?php echo getFlatById($_GET['flat_id'])['Description']; ?></p>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-4 appartment__rs">
                 <h2 class="appartment__title"><?php echo getFlatById($_GET['flat_id'])['City']; ?>,<br> <?php echo getFlatById($_GET['flat_id'])['Street']; ?></h2>
-                <div class="appartment__id-wrapper"><span>ID<span><?php echo getFlatById($_GET['flat_id'])['Id']; ?></span><a class="appartment__rooms"><?php echo getFlatById($_GET['flat_id'])['Rooms']; ?> комнатная</a></div>
+                <div class="appartment__id-wrapper"><span>ID<span><?php echo getFlatById($_GET['flat_id'])['Id']; ?></span></span><a class="appartment__rooms"><?php echo getFlatById($_GET['flat_id'])['Rooms']; ?> комнатная</a></div>
                 <strong class="appartment__price"><?php echo getFlatById($_GET['flat_id'])['Price']; ?> &#8381;</strong>
                 <div class="appartment__info-wr"><span class="appartment__info-title">Район:</span><?php echo getFlatById($_GET['flat_id'])['District']; ?></div>
-<!--                <div class="appartment__info-wr"><span class="appartment__info-title">Ул:</span>8-ой Воздушной Армии, дом 6 Б</div>-->
                 <div class="appartment__info-wr"><?php echo getFlatById($_GET['flat_id'])['Street']; ?></div>
                 <div class="appartment__info-block-wr">
                     <div class="appartment__info-block"><span class="appartment__info-block-title">Жилая</span><strong class="appartment__info-block-desc"><?php echo getFlatById($_GET['flat_id'])['LivingSpace']; ?> м<sup>2</sup></strong></div>
@@ -39,8 +33,8 @@ Template Name: item
                     <img class="appartment__feedback-img" src="<?php bloginfo('template_url') ?>/images/feedback.jpg" alt="Звоните">
                     <div class="appartment__feedback-wr">
                         <h3 class="appartment__feedback-title">Звоните, я на связи!</h3>
-                        <a class="appartment__feedback-call" href="tel:8 900 78-33-71">8 900 78-33-71 </a>
-                        <button class="appartment__feedback-btn" type="button" data-toggle="modal" data-target="#modal-offer">Подобрать другую вам квартиру?</button>
+                        <a class="appartment__feedback-call" href="tel:89377311515">8937-731-1515</a>
+                        <button class="appartment__feedback-btn" type="button" data-toggle="modal" data-target="#modal-offer">Вам подобрать другую квартиру?</button>
                     </div>
                 </div>
                 <div class="appartment__mortgage">
@@ -57,18 +51,15 @@ Template Name: item
                 </div>
             </div>
         </div>
-
-
         <div class="proposals__item-list row">
+            <h2 class="proposals__title col-12">Похожие квартиры по вашему запросу</h2> 
             <?php foreach (getNearestFlats($_GET['flat_id']) as $flat) : ?>
-                <div class="proposals__item col-sm-6 col-lg-4">
+                <a class="proposals__item col-sm-6 col-lg-4" href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">
                     <div class="proposals__img-wrapper">
-                        <a class="proposals__link"
-                           href="<?php echo get_page_link(7) . '&flat_id=' . $flat['Id']; ?>">Посмотреть</a>
+                        <span class="proposals__link" >Посмотреть</span>
                         <?php if (!is_array($flat['Images']['Image'])) : ?>
                             <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
                                  alt="<?php echo $flat->Street; ?>">
-                            <!--                                <span class="proposals__sale">Скидки</span>-->
                             <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
                                 <span class="proposals__mortgage">Ипотека</span>
                             <?php endif ?>
@@ -77,7 +68,6 @@ Template Name: item
                             <img class="proposals__img"
                                  src="<?php echo $flat['Images']['Image'][0]['@attributes']['url']; ?>"
                                  alt="<?php echo $flat->Street; ?>">
-                            <!--                                <span class="proposals__sale">Скидки</span>-->
                             <?php if (!stristr($flat['Description'], 'ипотек')) : ?>
                                 <span class="proposals__mortgage">Ипотека</span>
                             <?php endif ?>
@@ -106,50 +96,44 @@ Template Name: item
                         </table>
                     </div>
                     <div class="proposals__price-wrapper">
-                        <!--                        <span class="proposals__price-last">6 500 000 &#8381;</span>-->
                         <span class="proposals__price-new"><?php echo $flat['Price']; ?> &#8381;</span>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
+    </section>
+    <div id="map">
+        <div class="appartment-coord d-none"><span class="appartment-coord__x">55.757741</span><span class="appartment-coord__y"> 37.624725</span></div>
+    </div>
 
-
-<!--         <div class="row">
-            <div class="application__map">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A36329de59be7854ce8be36767a9332a8a2289974a709541966d21f0cb4958656&amp;width=100%25&amp;height=400&amp;lang=uk_UA&amp;scroll=true"></script>
-            </div>
-        </div> -->
-    </section> 
 </main>
 
-    <div class="modal" id="modal-offer">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Предложить свою на обмен</h2>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <?php echo do_shortcode('[contact-form-7 id="42" title="offer apartment"]'); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-  
+<script src="//api-maps.yandex.ru/2.1/?b6b2830b-172f-4e65-926c-93cdbba909f6&lang=ru-RU" type="text/javascript"></script>
+<script>
+    $( document ).ready(function() {
+       if ($("#map" < 0)) {
+            var map = $("#map");
+            if (map) {
+                var mapCoordX = +($(".appartment-coord__x").text());
+                var mapCoordY= +($(".appartment-coord__y").text());
+                    ymaps.ready(init);
+                    function init () {
+                           var myMap = new ymaps.Map('map', {
+                                center: [mapCoordX, mapCoordY],  
+                                zoom: 16
+                            });
+                            var myPlacemark = new ymaps.Placemark(
+                                [mapCoordX,mapCoordY] , {
+                                hintContent: 'Нам сюда'                
+                            }, {
+                                iconImageSize: [45, 45],                                 
+                                iconImageOffset: [-70, -40]                            
+                                });     
+                            myMap.geoObjects.add(myPlacemark);
 
-<div class="modal" id="modal-offer-price">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Предложить свою стоимость</h2>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <?php echo do_shortcode('[contact-form-7 id="7174" title="offer own price"]'); ?>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+                    }        
+            }
+        }
+    });
+</script>
 <?php get_footer() ?>

@@ -21,7 +21,7 @@
 				<div class="col-12 col-md-6 col-lg-5 footer-md">
 					<ul class="footer-menu">
 						<li><a href="<?php echo get_page_link( 7053 ); ?>">Квартиры</a></li>
-						<li><a href="<?php echo get_page_link( 7053 ); ?>">Комнаты</a></li>
+<!-- 						<li><a href="<?php echo get_page_link( 7053 ); ?>">Комнаты</a></li> -->
 						<li><a href="<?php echo get_page_link( 9 ); ?>">Дома и коттеджи</a></li>
 <!-- 						<li><a href="">Коммерческая недвижимость</a></li> -->
 					</ul>
@@ -38,7 +38,7 @@
 						<div class="footer-counter"></div>
 <!-- 						<div class="footer-counter"></div> -->
 					</div>
-					<a href="https://vk.com/" target="_blank" class="vk-link">
+					<a href="https://vk.com/rieltorvlg" target="_blank" class="vk-link">
 						<img src="<?php bloginfo('template_url') ?>/images/vk.png" alt="Vkontakte">
 						Группа vk.com
 						<span>присоединяйтесь</span>
@@ -48,6 +48,8 @@
 			</div>
 		</div>
 	</footer>
+	</footer>
+
 	
 
   <?php wp_footer(); ?>
