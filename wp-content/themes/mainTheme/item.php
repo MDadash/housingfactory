@@ -103,7 +103,7 @@
         </div>
     </section>
     <div id="map">
-        <div class="appartment-coord d-none"><span class="appartment-coord__x">55.757741</span><span class="appartment-coord__y"> 37.624725</span></div>
+        <div class="appartment-coord d-none"><span class="appartment-coord__x"><?php echo getFlatById($_GET['flat_id'])['Latitude']; ?></span><span class="appartment-coord__y"><?php echo getFlatById($_GET['flat_id'])['Longitude']; ?></span></div>
     </div>
 
 </main>

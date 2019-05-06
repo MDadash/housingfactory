@@ -145,6 +145,7 @@ footer img {
 
 .footer-menu {
 	display: inline-block;
+	vertical-align: text-top;
 }
 .footer-menu:first-child {
 	margin-right: 55px;
