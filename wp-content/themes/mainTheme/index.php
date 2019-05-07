@@ -51,36 +51,29 @@
             <div class="proposals__item-list row">
                 <?php foreach (getLasTwelveFlats() as $flat) : ?>
                     <div class="col-sm-6 col-lg-4">
-                        <a class="proposals__item" href="<?php echo get_page_link(7) . '&flat_id=' . $flat['@attributes']['internal-id']; ?>">
+                        <a class="proposals__item"
+                           href="<?php echo get_page_link(7) . '&flat_id=' . $flat['@attributes']['internal-id']; ?>">
                             <div class="proposals__img-wrapper">
                                 <span class="proposals__link">Посмотреть</span>
                                 <?php if (!is_array($flat['image'])) : ?>
-                                    <img class="proposals__img" src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
-                                         alt="<?php echo $flat['location']['address']; ?>">
-                                    <?php if ($flat['mortgage']) : ?>
-                                        <span class="proposals__mortgage">Ипотека</span>
-                                    <?php endif ?>
-                                    <span class="proposals__rooms"><?php echo $flat['rooms']; ?> комнаты</span>
-                                <?php else : ?>
                                     <img class="proposals__img"
-                                         src="<?php echo $flat['image'][0]; ?>"
+                                         src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
                                          alt="<?php echo $flat['location']['address']; ?>">
-                                    <?php if ($flat['mortgage']) : ?>
-                                        <span class="proposals__mortgage">Ипотека</span>
-                                    <?php endif ?>
-                                    <span class="proposals__rooms"><?php echo $flat['rooms']; ?> комнаты</span>
-                                    <?php if (count($flat['image']) >= 8) : ?>
-                                        <span class="proposals__reccommend"></span>
-                                    <?php endif ?>
+                                <?php else : ?>
+                                    <img class="proposals__img" src="<?php echo $flat['image'][0]; ?>"
+                                         alt="<?php echo $flat['location']['address']; ?>">
                                 <?php endif; ?>
+                                <?php if ($flat['mortgage']) : ?>
+                                    <span class="proposals__mortgage">Ипотека</span>
+                                <?php endif ?>
+                                <span class="proposals__rooms"><?php echo $flat['rooms']; ?> комнаты</span>
                             </div>
                             <div class="proposals__info-wrapper">
                                 <h3 class="proposals__title"><?php echo $flat['location']['address']; ?></h3>
                                 <table class="proposals__info">
                                     <tr>
                                         <td class="proposals__field">Этаж:</td>
-                                        <td class="proposals__value"><?php echo $flat['floor']; ?>
-                                            /<?php echo $flat['floors-total']; ?></td>
+                                        <td class="proposals__value"><?php echo $flat['floor'] . '/' . $flat['floors-total']; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="proposals__field">Комнат</td>
@@ -88,7 +81,8 @@
                                     </tr>
                                     <tr>
                                         <td class="proposals__field">Площадь</td>
-                                        <td class="proposals__value"><?php echo $flat['area']['value']; ?>m<sup>2</sup></td>
+                                        <td class="proposals__value"><?php echo $flat['area']['value']; ?>m<sup>2</sup>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
