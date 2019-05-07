@@ -125,6 +125,9 @@ function getHousesForAjax() {
 function getImagesByFlatId() {
     $flat_id = $_GET['flat_id'];
     $imagesByFlatId = getFlatById($flat_id)['image'] ?? [];
+    if (is_string($imagesByFlatId)) {
+        $imagesByFlatId = [$imagesByFlatId];
+    }
     echo json_encode($imagesByFlatId);
     wp_die();
 }
