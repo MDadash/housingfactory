@@ -30,7 +30,6 @@
                 });
                 $( document ).ajaxComplete(function() {
                     globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
-                    console.log(globalFlats);
                     getAndShowDistricts(globalFlats);
                     if(window.location.href.split('page_id=7053').pop()){
                         getUrlParameter ();
@@ -62,7 +61,6 @@
         });
         $( document ).ajaxComplete(function() {
             globalHouses = JSON.parse(sessionStorage.getItem('globalHouses'));
-            console.log(globalHouses);
             showMoreOption (globalHouses, showMoreStep, (showMoreStep + 12));
 
         });
@@ -111,7 +109,6 @@
 //  show all districts from xml in select
         function getAndShowDistricts (flatsArray) {
             var allDistrictsArray = [];
-            console.log(allDistrictsArray);
             for (var i = 0; i < flatsArray.length; i++) {
                 allDistrictsArray.push(flatsArray[i]['location']['sub-locality-name']);
             }
@@ -128,7 +125,6 @@
                 }
 
                 if (!sessionStorage.getItem('districts')) {
-                    console.log(districtsArray);
                     var districtsString = JSON.stringify(districtsArray);
                     sessionStorage.setItem('districts', districtsString);
                 } else {
