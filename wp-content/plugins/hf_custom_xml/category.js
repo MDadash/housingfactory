@@ -30,6 +30,7 @@
                 });
                 $( document ).ajaxComplete(function() {
                     globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
+                    console.log(globalFlats);
                     getAndShowDistricts(globalFlats);
                     if(window.location.href.split('page_id=7053').pop()){
                         getUrlParameter ();
@@ -61,6 +62,7 @@
         });
         $( document ).ajaxComplete(function() {
             globalHouses = JSON.parse(sessionStorage.getItem('globalHouses'));
+            console.log(globalHouses);
             showMoreOption (globalHouses, showMoreStep, (showMoreStep + 12));
 
         });
@@ -78,10 +80,10 @@
             var showingFlatsByRoomsQuantity = [];
 
             for (var j = 0; j < flatsArray.length; j++) {
-                if (flatsArray[j]['Category'] == 'Комнаты' && activeLink.getAttribute('data-rooms') == 'room') {
+                if (flatsArray[j]['category'] == 'комната' && activeLink.getAttribute('data-rooms') == 'room') {
                     showingFlatsByRoomsQuantity.push(flatsArray[j]);
                 } else {
-                    var roomsNumber = flatsArray[j]['Rooms'];
+                    var roomsNumber = flatsArray[j]['rooms'];
                     if (activeLink.getAttribute('data-rooms') == 4 && +roomsNumber >= activeLink.getAttribute('data-rooms')) {
                             showingFlatsByRoomsQuantity.push(flatsArray[j]);
                     } else if (activeLink.getAttribute('data-rooms') == roomsNumber) {
@@ -92,7 +94,7 @@
 
             actualFlatsArray = [];
             for (var i = 0; i < showingFlatsByRoomsQuantity.length; i++) {
-                if (showingFlatsByRoomsQuantity[i]['District'] == activeDistrict) {
+                if (showingFlatsByRoomsQuantity[i]['location']['sub-locality-name'] == activeDistrict) {
                     actualFlatsArray.push(showingFlatsByRoomsQuantity[i]);
                 }
             }
@@ -109,8 +111,9 @@
 //  show all districts from xml in select
         function getAndShowDistricts (flatsArray) {
             var allDistrictsArray = [];
+            console.log(allDistrictsArray);
             for (var i = 0; i < flatsArray.length; i++) {
-                allDistrictsArray.push(flatsArray[i]["District"]);
+                allDistrictsArray.push(flatsArray[i]['location']['sub-locality-name']);
             }
 
             districtsFilter:
@@ -125,6 +128,7 @@
                 }
 
                 if (!sessionStorage.getItem('districts')) {
+                    console.log(districtsArray);
                     var districtsString = JSON.stringify(districtsArray);
                     sessionStorage.setItem('districts', districtsString);
                 } else {
@@ -148,12 +152,12 @@
             // for (var i = 0; i < flatsArr.length; i++) {
                 var flatContainerWrap = document.createElement('div');
                 flatContainerWrap.className = 'col-sm-6 col-lg-4';
-                var dataDistrictAttr = flatsArr['District'];
+                var dataDistrictAttr = flatsArr['location']['sub-locality-name'];
                 flatContainerWrap.setAttribute('data-district', dataDistrictAttr);
 
                 var flatContainer = document.createElement('a');
                 flatContainer.className = 'proposals__item';
-                flatContainer.href = document.location.origin + '/?page_id=7&flat_id=' + flatsArr['Id'];
+                flatContainer.href = document.location.origin + '/?page_id=7&flat_id=' + flatsArr['@attributes']['internal-id'];
 
 
                 var imgWrapper = document.createElement('div');
@@ -165,17 +169,17 @@
                 proposalsImg.className = 'proposals__img';
                 proposalsImg.alt = flatsArr['Street'];
 
-                if (flatsArr['Images'].length == 0) {
+                if (flatsArr['image'] == undefined) {
                     proposalsImg.src = 'wp-content/themes/mainTheme/images/noimage.jpg';
                 } else {
-                    if (flatsArr['Images']['Image'][0]) {
-                        proposalsImg.src = flatsArr['Images']['Image'][0]['@attributes']['url'];
+                    if (typeof flatsArr['image'] == 'string') {
+                        proposalsImg.src = flatsArr['image'];
                     } else {
-                        proposalsImg.src = flatsArr['Images']['Image']['@attributes']['url'];
+                        proposalsImg.src = flatsArr['image'][0];
                     }
                 }
 
-                if (flatsArr['Description'].indexOf('ипотек')) {
+                if (flatsArr['description'].indexOf('ипотек')) {
                     var proposalsMortgage = document.createElement('span');
                     proposalsMortgage.className = 'proposals__mortgage';
                     proposalsMortgage.innerText = 'Ипотека';
@@ -183,42 +187,42 @@
 
                 var proposalsRooms = document.createElement('span');
                 proposalsRooms.className = 'proposals__rooms';
-                if (flatsArr['Category'] == 'Дома, дачи, коттеджи') {
-                    proposalsRooms.innerText = flatsArr['ObjectType'];
+                if (flatsArr['category-id'] == '3') {
+                    proposalsRooms.innerText = flatsArr['category'];
                     proposalsRooms.style.textTransform = 'Capitalize';
                 } else {
-                    if (flatsArr['Rooms'] == 1) {
-                        proposalsRooms.innerText = flatsArr['Rooms'] + ' комната';
-                    } else if (!flatsArr['Rooms']) {
+                    if (flatsArr['rooms'] == 1) {
+                        proposalsRooms.innerText = flatsArr['rooms'] + ' комната';
+                    } else if (!flatsArr['rooms']) {
                         proposalsRooms.innerText = ' комнаты';
                     } else {
-                        if (+flatsArr['Rooms']) {
-                            proposalsRooms.innerText = flatsArr['Rooms'] + ' комнаты';
+                        if (+flatsArr['rooms']) {
+                            proposalsRooms.innerText = flatsArr['rooms'] + ' комнаты';
                         } else {
-                            proposalsRooms.innerText = flatsArr['Rooms'];
+                            proposalsRooms.innerText = flatsArr['rooms'];
                         }
                     }
                 }
 
 
-                if (flatsArr['Images'].length != 0 && flatsArr['Images']['Image'].length >= 8) {
-                    var proposalsReccommend = document.createElement('span');
-                    proposalsReccommend.className = 'proposals__reccommend';
-                }
+                // if (flatsArr['image'].length != 0 && flatsArr['image'].length >= 8) {
+                //     var proposalsReccommend = document.createElement('span');
+                //     proposalsReccommend.className = 'proposals__reccommend';
+                // }
 
                 imgWrapper.appendChild(proposalsLink);
                 imgWrapper.appendChild(proposalsImg);
                 if (proposalsMortgage) {imgWrapper.appendChild(proposalsMortgage);}
                 imgWrapper.appendChild(proposalsMortgage);
                 imgWrapper.appendChild(proposalsRooms);
-                if (proposalsReccommend) {imgWrapper.appendChild(proposalsReccommend);}
+                // if (proposalsReccommend) {imgWrapper.appendChild(proposalsReccommend);}
 
 
                 var infoWrapper = document.createElement('div');
                 infoWrapper.className = 'proposals__info-wrapper';
                 var proposalsTitle = document.createElement('h3');
                 proposalsTitle.className = 'proposals__title';
-                proposalsTitle.innerText = flatsArr['Street'];
+                proposalsTitle.innerText = flatsArr['location']['address'];
                 var proposalsInfoTable = document.createElement('table');
                 proposalsInfoTable.className = 'proposals__info';
                 var proposalsInfofirstRow = document.createElement('tr');
@@ -235,9 +239,9 @@
                 proposalsInfofirstfield.innerText = 'Этаж:';
                 proposalsInfosecondfield.innerText = 'Комнат';
                 proposalsInfothirdfield.innerText = 'Площадь';
-                proposalsInfofirstvalue.innerText = (flatsArr['Floor'] ? flatsArr['Floor'] : ' - ') + '/' + flatsArr['Floors'];
-                proposalsInfosecondvalue.innerText = flatsArr['Rooms'] ? flatsArr['Rooms'] : ' - ';
-                proposalsInfothirdvalue.innerHTML = flatsArr['Square'] + 'm<sup>2</sup>';
+                proposalsInfofirstvalue.innerText = (flatsArr['floor'] ? flatsArr['floor'] : ' - ') + '/' + flatsArr['floors-total'];
+                proposalsInfosecondvalue.innerText = flatsArr['rooms'] ? flatsArr['rooms'] : ' - ';
+                proposalsInfothirdvalue.innerHTML = flatsArr['area']['value'] + 'm<sup>2</sup>';
 
                 proposalsInfofirstRow.appendChild(proposalsInfofirstfield);
                 proposalsInfofirstRow.appendChild(proposalsInfofirstvalue);
@@ -261,7 +265,7 @@
                 priceWrapper.className = 'proposals__price-wrapper';
                 var proposalsPrice = document.createElement('span');
                 proposalsPrice.className = 'proposals__price-new';
-                proposalsPrice.innerHTML = flatsArr['Price'] + ' &#8381;';
+                proposalsPrice.innerHTML = flatsArr['price']['value'] + ' &#8381;';
 
                 priceWrapper.appendChild(proposalsPrice);
 

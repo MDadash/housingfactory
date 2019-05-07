@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="appartment__mortgage">
-                        <a href="<?php echo get_page_link(9); ?>" class="appartment__mortgage-link">
+                        <a href="<?php echo get_page_link(7112); ?>" class="appartment__mortgage-link">
                             <span class="appartment__mortgage-text">Подать заявку в банк</span>
                             <span class="appartment__mortgage-text">на ипотеку</span>
                         </a>
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="proposals__item-list row">
-                <?php $nearestFlat ? $result = 'Похожие квартиры по вашему запросу' : $result = 'Похожих квартиры по вашему запросу не найдено' ?>
+                <?php $nearestFlat ? $result = 'Похожие квартиры по вашему запросу' : $result = 'Похожих квартир по вашему запросу не найдено' ?>
                 <h2 class="proposals__title col-12"><?php echo $result ?></h2>
                 <?php foreach ($nearestFlat as $flat) : ?>
                     <div class="col-sm-6 col-lg-4">
@@ -132,6 +132,34 @@
         </div>
 
     </main>
+
+  <div class="modal modal-offer" id="modal-offer">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Предложить свою на обмен</h2>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <?php echo do_shortcode('[contact-form-7 id="42" title="offer apartment"]'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-offer" id="modal-offer-price">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Предложить свою стоимость</h2>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <?php echo do_shortcode('[contact-form-7 id="7174" title="offer own price"]'); ?>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="//api-maps.yandex.ru/2.1/?b6b2830b-172f-4e65-926c-93cdbba909f6&lang=ru-RU"
             type="text/javascript"></script>
