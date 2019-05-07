@@ -86,12 +86,12 @@
                            href="<?php echo get_page_link(7) . '&flat_id=' . $flat['@attributes']['internal-id']; ?>">
                             <div class="proposals__img-wrapper">
                                 <span class="proposals__link">Посмотреть</span>
-                                <?php if (!is_array($flat['image'])) : ?>
+                                <?php if (!is_array($flat['image']) && !is_string($flat['image'])) : ?>
                                     <img class="proposals__img"
                                          src="<?php bloginfo('template_url') ?>/images/noimage.jpg"
                                          alt="<?php echo $flat['location']['address']; ?>">
                                 <?php else : ?>
-                                    <img class="proposals__img" src="<?php echo $flat['image'][0]; ?>"
+                                    <img class="proposals__img" src="<?php echo is_string($flat['image']) ? $flat['image'] : $flat['image'][0]; ?>"
                                          alt="<?php echo $flat['location']['address']; ?>">
                                 <?php endif; ?>
                                 <?php if ($flat['mortgage']) : ?>
