@@ -27,7 +27,7 @@ Template Post Type: post
 
                 <div class="service-form service-form--border clearfix">
                   <h3 class="service-form__heading">Закажите эту услугу у наших специалистов</h3>
-                  <p class="txt-grey my-3">Оставьте свой телефон и специальная форма или позвоните сами</p>
+                  <p class="txt-grey my-3">Оставьте свой телефон в специальной форме или позвоните сами</p>
                   <?php echo do_shortcode('[contact-form-7 id="43" title="Contact form 2"]'); ?>
                 </div>
 

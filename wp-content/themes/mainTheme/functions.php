@@ -8,6 +8,7 @@ function theme_name_scripts() {
         
     // wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js');
     wp_enqueue_script('bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js');
+    wp_enqueue_script('jquery-mask', get_template_directory_uri() . '/js/jquery.mask.js');
     // wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
 }
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );

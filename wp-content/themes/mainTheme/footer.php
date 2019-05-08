@@ -48,7 +48,14 @@
 			</div>
 		</div>
 	</footer>
-	</footer>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery('.phone').mask('0(000)-000-0000');
+        jQuery('.phone-nocode').mask('(000)-000-0000');
+    });
+</script>
+
 
 	
 
