@@ -31,6 +31,7 @@
                 $( document ).ajaxComplete(function() {
                     globalFlats = JSON.parse(sessionStorage.getItem('globalFlats'));
                     getAndShowDistricts(globalFlats);
+
                     if(window.location.href.split('page_id=7053').pop()){
                         getUrlParameter ();
                         // showMoreOption (actualFlatsArray, showMoreStep, (showMoreStep + 12));
@@ -123,20 +124,21 @@
                         districtsArray.push(currentDistrict);
                     }
                 }
+            districtsArray = districtsArray.sort();
 
-                if (!sessionStorage.getItem('districts')) {
+                if (!sessionStorage.getItem('districts') || !JSON.parse(sessionStorage.getItem('districts')).length) {
                     var districtsString = JSON.stringify(districtsArray);
                     sessionStorage.setItem('districts', districtsString);
                 } else {
                     districtsArray = JSON.parse(sessionStorage.getItem('districts'));
                 }
 
-            for (var i = 0; i < districtsArray.length; i++) {
-                var option = document.createElement('option');
-                option.value = option.innerText = districtsArray[i];
-                option.setAttribute('data-district-id', i);
-                districtsSelect.appendChild(option);
-            }
+            // for (var i = 0; i < districtsArray.length; i++) {
+            //     var option = document.createElement('option');
+            //     option.value = option.innerText = districtsArray[i];
+            //     option.setAttribute('data-district-id', i);
+            //     districtsSelect.appendChild(option);
+            // }
 
             $('#select-district').niceSelect('destroy');
             $("#select-district").niceSelect();
@@ -175,7 +177,7 @@
                     }
                 }
 
-                if (flatsArr['description'].indexOf('ипотек')) {
+                if (flatsArr['mortgage'] == '1') {
                     var proposalsMortgage = document.createElement('span');
                     proposalsMortgage.className = 'proposals__mortgage';
                     proposalsMortgage.innerText = 'Ипотека';
@@ -208,8 +210,7 @@
 
                 imgWrapper.appendChild(proposalsLink);
                 imgWrapper.appendChild(proposalsImg);
-                if (proposalsMortgage) {imgWrapper.appendChild(proposalsMortgage);}
-                imgWrapper.appendChild(proposalsMortgage);
+                if (flatsArr['mortgage'] == '1') {imgWrapper.appendChild(proposalsMortgage);}
                 imgWrapper.appendChild(proposalsRooms);
                 // if (proposalsReccommend) {imgWrapper.appendChild(proposalsReccommend);}
 

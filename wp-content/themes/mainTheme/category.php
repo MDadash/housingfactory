@@ -36,6 +36,14 @@ Template Name: category
                         <select name="select-district" id="select-district"
                                 class="filter__select px-1 my-1 my-lg-0 mx-1">
 <!--                            <option value="">- Выберите район -</option>-->
+                          <option value="Ворошиловский" data-district-id="0">Ворошиловский</option>
+                          <option value="Дзержинский" data-district-id="1">Дзержинский</option>
+                          <option value="Кировский" data-district-id="2">Кировский</option>
+                          <option value="Красноармейский" data-district-id="3">Красноармейский</option>
+                          <option value="Краснооктябрьский" data-district-id="4">Краснооктябрьский</option>
+                          <option value="Советский" data-district-id="5">Советский</option>
+                          <option value="Тракторозаводский" data-district-id="6">Тракторозаводский</option>
+                          <option value="Центральный" data-district-id="7">Центральный</option>
                         </select>
                     </div>
                 </div>
