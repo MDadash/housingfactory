@@ -32,24 +32,24 @@ function getFlatById($flat_id) {
     return $flat;
 }
 
-function getNearestFlats($flat_id) {
+function getAllNearestFlats($flat_id) {
     $nearestFlats = [];
     $allFlats = getAllXml();
     $flat = getFlatById($flat_id);
     $flatDistrict = $flat['location']['sub-locality-name'];
     $flatRooms = $flat['rooms'];
-//    $flatFloors = $flat['floors-total'];
 
     foreach ($allFlats as $key => $val) {
-        if ($val['location']['sub-locality-name'] === $flatDistrict && $val['rooms'] === $flatRooms /*&& $val['floors-total'] === $flatFloors*/ && $val['@attributes']['internal-id'] != $flat_id) {
+        if ($val['location']['sub-locality-name'] === $flatDistrict && $val['rooms'] === $flatRooms && $val['@attributes']['internal-id'] != $flat_id) {
             array_push($nearestFlats, $val);
-        }
-        if (count($nearestFlats) === 9) {
-            return $nearestFlats;
         }
     }
 
     return $nearestFlats;
+}
+
+function getNearestFlats($flat_id) {
+    return array_slice(getAllNearestFlats($flat_id), 0, 9);
 }
 
 function getOnlyFlats() {
@@ -88,6 +88,7 @@ add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
 function getFlatForNextButtonByFlatId($flat_id) {
     $currentFlat = getFlatById($flat_id);
     $roomsQuantity = $currentFlat['rooms'];
+//    $allFlats = getAllNearestFlats($flat_id);
     $allFlats = getAllXml();
     $indexOfCurrentFlat = array_search($currentFlat, $allFlats);
     if (array_key_exists($indexOfCurrentFlat+1, $allFlats)) {
