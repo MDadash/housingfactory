@@ -35,7 +35,7 @@
 				</div>
 				<div class="col-12 col-md-3 col-lg-3">
 					<div>
-						<div class="footer-counter"></div>
+<!--						<div class="footer-counter"></div>-->
 <!-- 						<div class="footer-counter"></div> -->
 					</div>
 					<a href="https://vk.com/rieltorvlg" target="_blank" class="vk-link">

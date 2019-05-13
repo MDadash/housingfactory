@@ -31,14 +31,14 @@ Template Post Type: post
                   <?php echo do_shortcode('[contact-form-7 id="43" title="Contact form 2"]'); ?>
                 </div>
 
-                <div class="social-icons">
-                    <p class="social-icons__info txt-grey">Поделиться или сохранить ссылку</p>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                    <a href="https://twitter.com/" class="fab fa-twitter"></a>
-                    <a href="http://vk.com/" class="social-icons__vk fab fa-vk"></a>
-                    <a href="https://ok.ru/" class="fab fa-odnoklassniki"></a>
-                    <a href="https://plus.google.com/" class="fab fa-google-plus"></a>
-                </div>
+<!--                <div class="social-icons">-->
+<!--                    <p class="social-icons__info txt-grey">Поделиться или сохранить ссылку</p>-->
+<!--                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>-->
+<!--                    <a href="https://twitter.com/" class="fab fa-twitter"></a>-->
+<!--                    <a href="http://vk.com/" class="social-icons__vk fab fa-vk"></a>-->
+<!--                    <a href="https://ok.ru/" class="fab fa-odnoklassniki"></a>-->
+<!--                    <a href="https://plus.google.com/" class="fab fa-google-plus"></a>-->
+<!--                </div>-->
 
                 <div class="row mt-3">
                   <h2 class="col-12">Рекомендуем почитать</h2>
@@ -46,7 +46,7 @@ Template Post Type: post
                 </div>
 
                 <?php 
-                    $query = new WP_Query( array( 'category_name' => 'articles', 'posts_per_page' => 2, ) );
+                    $query = new WP_Query( array( 'category_name' => 'articles', 'posts_per_page' => 2, 'orderby' => 'rand' ) );
                         while ( $query->have_posts() ) { $query->the_post(); ?>
                             <article class="article row mt-0 mb-0">
                                 <div class="col-12 col-lg-4">
@@ -74,7 +74,7 @@ Template Post Type: post
 <!--                 <img src="<?php bloginfo('template_url') ?>/images/articles-banner.png" alt="" class="banner"> -->
                 <ul class="assistance__list assistance__list--lawyer">
                     <?php 
-                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6 ) );
+                        $query = new WP_Query( array( 'category_name' => 'legal-services', 'posts_per_page' => 6, 'orderby' => 'rand' ) );
                             while ( $query->have_posts() ) { $query->the_post(); ?>  
                                 <li class="assistance__item">
                                     <a class="assistance__link assistance__link--rra" href="<?php echo get_permalink(); ?>">

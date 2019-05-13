@@ -43,7 +43,7 @@ Template Name: employees
         </button>
                 <ul class="assistance__list assistance__list--lawyer">
                     <?php 
-                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6 ) );
+                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6, 'orderby' => 'rand' ) );
                             while ( $query->have_posts() ) { $query->the_post(); ?>  
                                 <li class="assistance__item">
                                     <a class="assistance__link assistance__link--rra" href="<?php echo get_permalink(); ?>">

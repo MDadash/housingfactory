@@ -40,7 +40,7 @@ Template Name: application
             <div class="row">
                 <div class="col-md-8">
                     <h6 class="application__contact application__contact--location">Мы находимся</h6>
-                    <p class="application__contact--text">Город Волгоград, Кировский район, улица 64-й Армии ул. 71 а, остановка Химтехникум. Мы находимся в трех этажном, офисном здании, на втором этаже. </p>
+                  <p class="application__contact--text">г. Волгоград, улица коммунистическая, дом 21<br> г. Волгоград, Кировский район, улица 64-й Армии ул. 71 а, остановка Химтехникум. Мы находимся в трех этажном, офисном здании, на втором этаже. </p>
                 </div>
                 <div class="col-md-4">
                     <a href="tel:8937-731-1515" class="application__contact application__contact--phone">8937-731-1515</a> <span class="phone-span">Звоните по всем вопросам</span>
@@ -52,7 +52,7 @@ Template Name: application
            <?php echo do_shortcode('[contact-form-7 id="43" title="Contact form 2"]'); ?> 
         </div>
         <div class="application__map">
-            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A36329de59be7854ce8be36767a9332a8a2289974a709541966d21f0cb4958656&amp;width=100%25&amp;height=400&amp;lang=uk_UA&amp;scroll=true"></script>
+          <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adde6636c085d65515e8674cca551991c77d2a38e968fda3da0b0c42cc0148201&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
         </div>
     </section>    
 </main>

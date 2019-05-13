@@ -39,9 +39,9 @@ Template Name: articles
                 <button class="request request--sell request--wider" type="button" data-toggle="modal" data-target="#modal-sale">
                     <span class="request__text">Продать свою квартиру</span>
                 </button>
-                <ul class="assistance__list assistance__list--lawyer">
+                <ul class="assistance__list">
                     <?php 
-                        $query = new WP_Query( array( 'category_name' => 'legal-services','posts_per_page' => 6 ) );
+                        $query = new WP_Query( array( 'category_name' => 'realtor-services','posts_per_page' => 6, 'orderby' => 'rand' ) );
                             while ( $query->have_posts() ) { $query->the_post(); ?>  
                                 <li class="assistance__item">
                                     <a class="assistance__link assistance__link--rra" href="<?php echo get_permalink(); ?>">

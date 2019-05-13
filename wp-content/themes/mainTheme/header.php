@@ -32,7 +32,7 @@
 						<img src="<?php bloginfo('template_url') ?>/images/logo.png" alt="logo">
 					</a>
 				</div>
-				<div class="col-12 col-sm-4 col-md-3 offset-sm-3 offset-md-0 mt-3 pl-3  text-center text-sm-left">
+				<div class="col-12 col-sm-4 col-md-3 offset-sm-3 offset-md-0 mt-3 pl-3 text-center text-sm-left d-none d-md-block">
 					<a href="tel:89377311515 " class="phonenumber link-phone"><?php echo get_option('my_phone'); ?></a>
 					<p class="mt-2 p-color-grey d-none d-md-block">У нас есть покупатель на вашу квартиру</p>
 				</div>

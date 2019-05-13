@@ -31,6 +31,10 @@
                     </div>
                     <div class="appartment__info-wr"><?php echo $currentFlat['location']['address']; ?></div>
                     <div class="appartment__info-block-wr">
+                      <div class="appartment__info-area"><span
+                                class="appartment__info-block-title appartment__info-area-title">Общая площадь</span><strong
+                                class="appartment__info-block-desc appartment__info-area-desc"><?php echo $currentFlat['area']['value']; ?>
+                          м<sup>2</sup></strong></div>
                         <div class="appartment__info-block"><span
                                 class="appartment__info-block-title">Жилая</span><strong
                                 class="appartment__info-block-desc"><?php echo $currentFlat['living-space']['value']; ?>
@@ -77,6 +81,13 @@
                     </div>
                 </div>
             </div>
+          <div id="map">
+            <p class="map__title">Объект расположен</p>
+            <div class="appartment-coord d-none"><span
+                      class="appartment-coord__x"><?php echo $currentFlat['Latitude']; ?></span><span
+                      class="appartment-coord__y"><?php echo $currentFlat['Longitude']; ?></span></div>
+          </div>
+
             <div class="proposals__item-list row">
                 <?php $nearestFlat ? $result = 'Похожие квартиры по вашему запросу' : $result = 'Похожих квартир по вашему запросу не найдено' ?>
                 <h2 class="proposals__title col-12"><?php echo $result ?></h2>
@@ -125,11 +136,7 @@
                 <?php endforeach; ?>
             </div>
         </section>
-        <div id="map">
-            <div class="appartment-coord d-none"><span
-                    class="appartment-coord__x"><?php echo $currentFlat['Latitude']; ?></span><span
-                    class="appartment-coord__y"><?php echo $currentFlat['Longitude']; ?></span></div>
-        </div>
+
 
     </main>
 

@@ -30,22 +30,22 @@ Template Post Type: post
                       <?php echo do_shortcode('[contact-form-7 id="43" title="Contact form 2"]'); ?>        
                 </div>
 
-                <div class="social-icons">
-                    <p class="social-icons__info txt-grey">Поделиться или сохранить ссылку</p>
-                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                    <a href="https://twitter.com/" class="fab fa-twitter"></a>
-                    <a href="http://vk.com/" class="social-icons__vk fab fa-vk"></a>
-                    <a href="https://ok.ru/" class="fab fa-odnoklassniki"></a>
-                    <a href="https://plus.google.com/" class="fab fa-google-plus"></a>
-                </div>
+<!--                <div class="social-icons">-->
+<!--                    <p class="social-icons__info txt-grey">Поделиться или сохранить ссылку</p>-->
+<!--                    <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>-->
+<!--                    <a href="https://twitter.com/" class="fab fa-twitter"></a>-->
+<!--                    <a href="http://vk.com/" class="social-icons__vk fab fa-vk"></a>-->
+<!--                    <a href="https://ok.ru/" class="fab fa-odnoklassniki"></a>-->
+<!--                    <a href="https://plus.google.com/" class="fab fa-google-plus"></a>-->
+<!--                </div>-->
 
                 <div class="row mt-3">
-                  <h2 class="col-12">Рекомендуем почитать</h2>
-                  <p class="col-12 txt-grey mt-3">Похожие услуги</p> 
+                  <p class="col-12">Другие услуги нашего агенства</p>
+<!--                  <p class="col-12 txt-grey mt-3">Похожие услуги</p> -->
                 </div>
 
                 <?php 
-                    $query = new WP_Query( array( 'category_name' => 'realtor-services', 'posts_per_page' => 2, ) );
+                    $query = new WP_Query( array( 'category_name' => 'realtor-services, legal-services', 'posts_per_page' => 3, 'orderby' => 'rand' ) );
                         while ( $query->have_posts() ) { $query->the_post(); ?>
                             <article class="article row mt-0 mb-0">
                                 <div class="col-12 col-lg-2 article__image">
@@ -54,7 +54,7 @@ Template Post Type: post
                                 <div class="col-12 col-lg-8 mt-3 mt-lg-0">
                                     <h3 class="article__heading"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></h3>
                                     <!-- <p class="article__date"><?php the_time("d M Y"); ?></p> -->
-                                    <div class="article__content"> <?php do_excerpt(get_the_excerpt(), 40); ?> </div>
+                                    <div class="article__content"> <?php do_excerpt(get_the_excerpt(), 10); ?> </div>
                                 </div>                    
                             </article>
                 <?php } ?> 
