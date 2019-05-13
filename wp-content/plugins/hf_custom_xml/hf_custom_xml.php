@@ -38,10 +38,10 @@ function getNearestFlats($flat_id) {
     $flat = getFlatById($flat_id);
     $flatDistrict = $flat['location']['sub-locality-name'];
     $flatRooms = $flat['rooms'];
-    $flatFloors = $flat['floors-total'];
+//    $flatFloors = $flat['floors-total'];
 
     foreach ($allFlats as $key => $val) {
-        if ($val['location']['sub-locality-name'] === $flatDistrict && $val['rooms'] === $flatRooms && $val['floors-total'] === $flatFloors && $val['@attributes']['internal-id'] != $flat_id) {
+        if ($val['location']['sub-locality-name'] === $flatDistrict && $val['rooms'] === $flatRooms /*&& $val['floors-total'] === $flatFloors*/ && $val['@attributes']['internal-id'] != $flat_id) {
             array_push($nearestFlats, $val);
         }
         if (count($nearestFlats) === 9) {
