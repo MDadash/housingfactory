@@ -83,9 +83,9 @@
                     showingFlatsByRoomsQuantity.push(flatsArray[j]);
                 } else {
                     var roomsNumber = flatsArray[j]['rooms'];
-                    if (activeLink.getAttribute('data-rooms') == 4 && +roomsNumber >= activeLink.getAttribute('data-rooms')) {
-                            showingFlatsByRoomsQuantity.push(flatsArray[j]);
-                    } else if (activeLink.getAttribute('data-rooms') == roomsNumber) {
+                    if (activeLink.getAttribute('data-rooms') == 4 && +roomsNumber >= activeLink.getAttribute('data-rooms') && flatsArray[j]['category-id'] !== '2') {
+                        showingFlatsByRoomsQuantity.push(flatsArray[j]);
+                    } else if (activeLink.getAttribute('data-rooms') == roomsNumber && flatsArray[j]['category-id'] !== '2') {
                         showingFlatsByRoomsQuantity.push(flatsArray[j]);
                     }
                 }
