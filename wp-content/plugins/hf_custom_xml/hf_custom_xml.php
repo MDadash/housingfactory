@@ -88,25 +88,26 @@ add_action('wp_ajax_nopriv_getimagesbyflat', 'getImagesByFlatId');
 function getFlatForNextButtonByFlatId($flat_id) {
     $currentFlat = getFlatById($flat_id);
     $roomsQuantity = $currentFlat['rooms'];
+    $flatDistrict = $currentFlat['location']['sub-locality-name'];
 //    $allFlats = getAllNearestFlats($flat_id);
     $allFlats = getAllXml();
     $indexOfCurrentFlat = array_search($currentFlat, $allFlats);
     if (array_key_exists($indexOfCurrentFlat+1, $allFlats)) {
         $firstArrayPartForSearch = array_slice($allFlats, ($indexOfCurrentFlat+1));
         foreach ($firstArrayPartForSearch as $flat) {
-            if ($flat['rooms'] === $roomsQuantity) {
+            if ($flat['rooms'] === $roomsQuantity && $flat['location']['sub-locality-name'] === $flatDistrict) {
                 return $flat['@attributes']['internal-id'];
             }
         }
         $secondArrayPartForSearch = array_splice($allFlats, $indexOfCurrentFlat+1);
         foreach ($secondArrayPartForSearch as $flat) {
-            if ($flat['rooms'] === $roomsQuantity) {
+            if ($flat['rooms'] === $roomsQuantity && $flat['location']['sub-locality-name'] === $flatDistrict) {
                 return $flat['@attributes']['internal-id'];
             }
         }
     }
     foreach ($allFlats as $flat) {
-        if ($flat['rooms'] === $roomsQuantity) {
+        if ($flat['rooms'] === $roomsQuantity && $flat['location']['sub-locality-name'] === $flatDistrict) {
             return $flat['@attributes']['internal-id'];
         }
     }
